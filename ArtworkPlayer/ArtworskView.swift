@@ -45,6 +45,9 @@ struct ArtworkView: View {
                 .onTapGesture {
                     self.music.play(collection: self.collection)
                 }
+                .onLongPressGesture(perform: {
+                    print(collection.representativeItem!.albumTitle)
+                })
         }
         else {
             Image(systemName: "opticaldisc")
