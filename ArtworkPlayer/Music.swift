@@ -38,5 +38,10 @@ final class Music: ObservableObject {
         print("\(item.albumTitle!):\(result)")
         return result
     }
+    
+    func play(collection: MPMediaItemCollection) {
+        self.player.setQueue(with: collection)
+        self.player.play()
+    }
 
 }

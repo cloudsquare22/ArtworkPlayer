@@ -12,7 +12,7 @@
 		8D997BB7275F779B000E4607 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D997BB6275F779B000E4607 /* Assets.xcassets */; };
 		8D997BBA275F779B000E4607 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D997BB9275F779B000E4607 /* Preview Assets.xcassets */; };
 		8D997BC4275F783D000E4607 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D997BC3275F783D000E4607 /* Music.swift */; };
-		8D997BC6275F787D000E4607 /* ArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D997BC5275F787D000E4607 /* ArtworkView.swift */; };
+		8D997BC6275F787D000E4607 /* ArtworskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D997BC5275F787D000E4607 /* ArtworskView.swift */; };
 		8D997BC9275F80E0000E4607 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 8D997BC8275F80E0000E4607 /* Algorithms */; };
 /* End PBXBuildFile section */
 
@@ -23,7 +23,7 @@
 		8D997BB6275F779B000E4607 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D997BB9275F779B000E4607 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8D997BC3275F783D000E4607 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
-		8D997BC5275F787D000E4607 /* ArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkView.swift; sourceTree = "<group>"; };
+		8D997BC5275F787D000E4607 /* ArtworskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 				8D997BB6275F779B000E4607 /* Assets.xcassets */,
 				8D997BB8275F779B000E4607 /* Preview Content */,
 				8D997BC3275F783D000E4607 /* Music.swift */,
-				8D997BC5275F787D000E4607 /* ArtworkView.swift */,
+				8D997BC5275F787D000E4607 /* ArtworskView.swift */,
 			);
 			path = ArtworkPlayer;
 			sourceTree = "<group>";
@@ -152,7 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D997BB5275F7798000E4607 /* ContentView.swift in Sources */,
-				8D997BC6275F787D000E4607 /* ArtworkView.swift in Sources */,
+				8D997BC6275F787D000E4607 /* ArtworskView.swift in Sources */,
 				8D997BC4275F783D000E4607 /* Music.swift in Sources */,
 				8D997BB3275F7798000E4607 /* ArtworkPlayerApp.swift in Sources */,
 			);

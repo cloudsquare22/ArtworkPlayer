@@ -11,7 +11,7 @@ import SwiftUI
 struct ArtworkPlayerApp: App {
     var body: some Scene {
         WindowGroup {
-            ArtworkView()
+            ArtworskView()
                 .environmentObject(Music())
         }
     }
