@@ -18,11 +18,17 @@ final class Music: ObservableObject {
     }
 
     func albums() {
+        print(UIScreen.main.bounds.size)
+        let columnCount = Int(UIScreen.main.bounds.width / 100)
+        let lineCount = Int(UIScreen.main.bounds.height / 100)
+        print((columnCount * lineCount))
+        let viewCount = columnCount * lineCount
+                
         self.viewCollections = []
         let mPMediaQuery = MPMediaQuery.albums()
         if let collections = mPMediaQuery.collections {
             print(collections.count)
-            for index in 0..<76 {
+            for index in 0..<(viewCount - 2) {
                 self.viewCollections.append(collections[index])
             }
         }
