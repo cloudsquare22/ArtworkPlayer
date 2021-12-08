@@ -34,6 +34,7 @@ struct ArtworskView: View {
                               self.music.albums()
                           }
                   }
+//                  .background(.green)
 //              }
         }
     }
