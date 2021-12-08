@@ -10,6 +10,7 @@ import MediaPlayer
 
 struct ArtworskView: View {
     @EnvironmentObject var music: Music
+    @State var isShowingSettingView = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -25,7 +26,11 @@ struct ArtworskView: View {
                           .frame(width: 98, height: 98, alignment: .center)
                           .clipShape(Circle())
                           .onTapGesture {
+                              self.isShowingSettingView.toggle()
                           }
+                          .sheet(isPresented: self.$isShowingSettingView, onDismiss: {}, content: {
+                              SettingView()
+                          })
                       Image(systemName: "arrow.clockwise.circle")
                           .resizable()
                           .frame(width: 98, height: 98, alignment: .center)
