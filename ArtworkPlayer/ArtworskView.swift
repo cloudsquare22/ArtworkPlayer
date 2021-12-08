@@ -20,6 +20,12 @@ struct ArtworskView: View {
                       ForEach(0..<self.music.viewCollections.count) { index in
                           ArtworkView(collection: self.music.viewCollections[index])
                       }
+                      Image(systemName: "gear")
+                          .resizable()
+                          .frame(width: 98, height: 98, alignment: .center)
+                          .clipShape(Circle())
+                          .onTapGesture {
+                          }
                       Image(systemName: "shuffle.circle")
                           .resizable()
                           .frame(width: 98, height: 98, alignment: .center)
