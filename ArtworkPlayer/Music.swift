@@ -63,6 +63,7 @@ final class Music: ObservableObject {
     
     func play(collection: MPMediaItemCollection) {
         self.player.setQueue(with: collection)
+        self.player.shuffleMode = .songs
         self.player.play()
     }
 
