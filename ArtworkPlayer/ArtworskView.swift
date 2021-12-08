@@ -15,7 +15,7 @@ struct ArtworskView: View {
         GeometryReader { geometry in
               let lineCount = Int(geometry.size.width / 100)
               let width = geometry.size.width / CGFloat(lineCount)
-              ScrollView {
+//              ScrollView {
                   LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: lineCount), alignment: .center, spacing: 0.0) {
                       ForEach(0..<self.music.viewCollections.count) { index in
                           ArtworkView(collection: self.music.viewCollections[index])
@@ -28,7 +28,7 @@ struct ArtworskView: View {
                               self.music.albums()
                           }
                   }
-              }
+//              }
         }
     }
 }
@@ -48,6 +48,7 @@ struct ArtworkView: View {
         if let artwork = self.music.artwork(item: collection.representativeItem!) {
             Image(uiImage: artwork)
                 .resizable()
+                .scaledToFit()
                 .frame(width: 98, height: 98, alignment: .center)
                 .clipShape(Circle())
                 .onTapGesture {
@@ -57,7 +58,7 @@ struct ArtworkView: View {
                     self.isShowingPopover.toggle()
                 })
                 .popover(isPresented: $isShowingPopover) {
-                    AlbumInformationView()
+                    AlbumInformationView(item: collection.representativeItem!)
                 }
         }
         else {
@@ -72,17 +73,21 @@ struct ArtworkView: View {
 
 struct AlbumInformationView: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var music: Music
+    var item: MPMediaItem
 
     var body: some View {
+        let information = self.music.albumInformation(item: item)
         VStack {
-            Text("Popover Content")
             Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
             },
                    label: {
-                Text("Close")
+                Image(systemName: "xmark.circle")
             })
+            Text(information.0)
+            Text(information.1)
         }
-        .padding()
+        .padding(4.0)
     }
 }

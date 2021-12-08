@@ -39,6 +39,22 @@ final class Music: ObservableObject {
         return result
     }
     
+    func albumInformation(item: MPMediaItem) -> (String, String) {
+        var result = ("", "")
+        if let albumTitle = item.albumTitle {
+            result.0 = albumTitle
+        }
+
+        if let albumArtist = item.albumArtist {
+            result.1 = albumArtist
+        }
+        else if let artist = item.artist {
+            result.1 = artist
+        }
+
+        return result
+    }
+    
     func play(collection: MPMediaItemCollection) {
         self.player.setQueue(with: collection)
         self.player.play()
