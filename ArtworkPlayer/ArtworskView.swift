@@ -94,6 +94,6 @@ struct AlbumInformationView: View {
             Text(information.0)
             Text(information.1)
         }
-        .padding(4.0)
+        .padding(8.0)
     }
 }
