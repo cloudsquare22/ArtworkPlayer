@@ -26,7 +26,7 @@ struct ArtworskView: View {
                           .clipShape(Circle())
                           .onTapGesture {
                           }
-                      Image(systemName: "shuffle.circle")
+                      Image(systemName: "arrow.clockwise.circle")
                           .resizable()
                           .frame(width: 98, height: 98, alignment: .center)
                           .clipShape(Circle())
