@@ -35,7 +35,8 @@ struct ArtworskView_Previews: PreviewProvider {
 struct ArtworkView: View {
     @EnvironmentObject var music: Music
     var collection: MPMediaItemCollection
-
+    @State private var isShowingPopover = false
+    
     var body: some View {
         if let artwork = self.music.artwork(item: collection.representativeItem!) {
             Image(uiImage: artwork)
@@ -46,8 +47,11 @@ struct ArtworkView: View {
                     self.music.play(collection: self.collection)
                 }
                 .onLongPressGesture(perform: {
-                    print(collection.representativeItem!.albumTitle)
+                    self.isShowingPopover.toggle()
                 })
+                .popover(isPresented: $isShowingPopover) {
+                    PopoverView()
+                }
         }
         else {
             Image(systemName: "opticaldisc")
@@ -56,5 +60,22 @@ struct ArtworkView: View {
                 .clipShape(Circle())
                 .foregroundColor(.primary)
         }
+    }
+}
+
+struct PopoverView: View {
+    @Environment(\.presentationMode) var presentationMode
+
+    var body: some View {
+        VStack {
+            Text("Popover Content")
+            Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            },
+                   label: {
+                Text("Close")
+            })
+        }
+        .padding()
     }
 }
