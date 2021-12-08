@@ -48,13 +48,15 @@ final class Music: ObservableObject {
         print(self.viewCollections.count)
     }
     
-    func artwork(item: MPMediaItem) -> UIImage? {
+    func artwork(item: MPMediaItem) -> UIImage {
         var result: UIImage? = nil
         if let value = item.value(forProperty: MPMediaItemPropertyArtwork) as? MPMediaItemArtwork {
             result = value.image(at: CGSize(width: value.bounds.width, height: value.bounds.height))
         }
-        print("\(item.albumTitle!):\(result)")
-        return result
+        else {
+            result = UIImage(systemName: "opticaldisc")
+        }
+        return result!
     }
     
     func albumInformation(item: MPMediaItem) -> (String, String) {

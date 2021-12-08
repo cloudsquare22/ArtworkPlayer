@@ -57,29 +57,21 @@ struct ArtworkView: View {
     @State private var isShowingPopover = false
     
     var body: some View {
-        if let artwork = self.music.artwork(item: collection.representativeItem!) {
-            Image(uiImage: artwork)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 98, height: 98, alignment: .center)
-                .clipShape(Circle())
-                .onTapGesture {
-                    self.music.play(collection: self.collection)
-                }
-                .onLongPressGesture(perform: {
-                    self.isShowingPopover.toggle()
-                })
-                .popover(isPresented: $isShowingPopover) {
-                    AlbumInformationView(item: collection.representativeItem!)
-                }
-        }
-        else {
-            Image(systemName: "opticaldisc")
-                .resizable()
-                .frame(width: 100, height: 100, alignment: .center)
-                .clipShape(Circle())
-                .foregroundColor(.primary)
-        }
+        let artwork = self.music.artwork(item: collection.representativeItem!)
+        Image(uiImage: artwork)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 98, height: 98, alignment: .center)
+            .clipShape(Circle())
+            .onTapGesture {
+                self.music.play(collection: self.collection)
+            }
+            .onLongPressGesture(perform: {
+                self.isShowingPopover.toggle()
+            })
+            .popover(isPresented: $isShowingPopover) {
+                AlbumInformationView(item: collection.representativeItem!)
+            }
     }
 }
 
