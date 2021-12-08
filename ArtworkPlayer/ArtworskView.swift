@@ -14,12 +14,19 @@ struct ArtworskView: View {
     var body: some View {
         GeometryReader { geometry in
               let lineCount = Int(geometry.size.width / 100)
-              let width = geometry.size.width / CGFloat(lineCount) - 4.0
+              let width = geometry.size.width / CGFloat(lineCount)
               ScrollView {
-                  LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: lineCount), alignment: .center, spacing: 4.0) {
+                  LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: lineCount), alignment: .center, spacing: 0.0) {
                       ForEach(0..<self.music.viewCollections.count) { index in
                           ArtworkView(collection: self.music.viewCollections[index])
                       }
+                      Image(systemName: "shuffle.circle")
+                          .resizable()
+                          .frame(width: 98, height: 98, alignment: .center)
+                          .clipShape(Circle())
+                          .onTapGesture {
+                              self.music.albums()
+                          }
                   }
               }
         }
@@ -41,7 +48,7 @@ struct ArtworkView: View {
         if let artwork = self.music.artwork(item: collection.representativeItem!) {
             Image(uiImage: artwork)
                 .resizable()
-                .frame(width: 100, height: 100, alignment: .center)
+                .frame(width: 98, height: 98, alignment: .center)
                 .clipShape(Circle())
                 .onTapGesture {
                     self.music.play(collection: self.collection)
@@ -50,7 +57,7 @@ struct ArtworkView: View {
                     self.isShowingPopover.toggle()
                 })
                 .popover(isPresented: $isShowingPopover) {
-                    PopoverView()
+                    AlbumInformationView()
                 }
         }
         else {
@@ -63,7 +70,7 @@ struct ArtworkView: View {
     }
 }
 
-struct PopoverView: View {
+struct AlbumInformationView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
