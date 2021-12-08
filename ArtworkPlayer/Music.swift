@@ -28,7 +28,19 @@ final class Music: ObservableObject {
         let mPMediaQuery = MPMediaQuery.albums()
         if let collections = mPMediaQuery.collections {
             print(collections.count)
-            for index in 0..<(viewCount - 2) {
+
+            var loopTo = viewCount
+            if collections.count < viewCount {
+                loopTo = collections.count
+            }
+            if loopTo == viewCount {
+                loopTo = loopTo - 2
+            }
+            else if(loopTo == viewCount - 1) {
+                loopTo = loopTo - 1
+            }
+
+            for index in 0..<(loopTo) {
                 self.viewCollections.append(collections[index])
             }
         }
