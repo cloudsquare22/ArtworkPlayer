@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ViewScrapbook
 
 struct SettingView: View {
     @EnvironmentObject var music: Music
@@ -25,6 +26,16 @@ struct SettingView: View {
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
         SettingView()
+    }
+}
+
+struct FilterSettingView: View {
+    @EnvironmentObject var music: Music
+
+    var body: some View {
+        Section(header: Label("Album Shuffle", systemImage: "opticaldisc")) {
+//            NumberPlusMinusInputView(title: NSLocalizedString("Select min tracks", comment: ""), bounds: 1...100, number: self.$music.minTracks)
+        }
     }
 }
 

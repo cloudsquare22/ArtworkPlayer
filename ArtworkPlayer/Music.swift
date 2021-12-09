@@ -12,6 +12,7 @@ import Algorithms
 final class Music: ObservableObject {
     var player: MPMusicPlayerController! = MPMusicPlayerController.systemMusicPlayer
     @Published var viewCollections: [MPMediaItemCollection] = []
+    @Published var minTracks: Int = 6
     
     init() {
         self.albums()
@@ -28,6 +29,7 @@ final class Music: ObservableObject {
         let mPMediaQuery = MPMediaQuery.albums()
         if let collections = mPMediaQuery.collections {
             print(collections.count)
+            let randomcollections = collections.randomSample(count: collections.count)
 
             var loopTo = viewCount
             if collections.count < viewCount {
@@ -40,8 +42,8 @@ final class Music: ObservableObject {
                 loopTo = loopTo - 1
             }
 
-            for index in 0..<(loopTo) {
-                self.viewCollections.append(collections[index])
+            for index in 0..<loopTo {
+                self.viewCollections.append(randomcollections[index])
             }
         }
         self.viewCollections = self.viewCollections.randomSample(count: self.viewCollections.count)

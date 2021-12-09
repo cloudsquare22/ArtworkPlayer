@@ -15,6 +15,7 @@
 		8D997BC6275F787D000E4607 /* ArtworskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D997BC5275F787D000E4607 /* ArtworskView.swift */; };
 		8D997BC9275F80E0000E4607 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 8D997BC8275F80E0000E4607 /* Algorithms */; };
 		8D997BCB2760E39E000E4607 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D997BCA2760E39E000E4607 /* SettingView.swift */; };
+		8D9A33032762305D003E445A /* ViewScrapbook in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9A33022762305D003E445A /* ViewScrapbook */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D9A33032762305D003E445A /* ViewScrapbook in Frameworks */,
 				8D997BC9275F80E0000E4607 /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +98,7 @@
 			name = ArtworkPlayer;
 			packageProductDependencies = (
 				8D997BC8275F80E0000E4607 /* Algorithms */,
+				8D9A33022762305D003E445A /* ViewScrapbook */,
 			);
 			productName = ArtworkPlayer;
 			productReference = 8D997BAF275F7798000E4607 /* ArtworkPlayer.app */;
@@ -127,6 +130,7 @@
 			mainGroup = 8D997BA6275F7798000E4607;
 			packageReferences = (
 				8D997BC7275F80E0000E4607 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				8D9A33012762305D003E445A /* XCRemoteSwiftPackageReference "ViewScrapbook" */,
 			);
 			productRefGroup = 8D997BB0275F7798000E4607 /* Products */;
 			projectDirPath = "";
@@ -373,6 +377,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		8D9A33012762305D003E445A /* XCRemoteSwiftPackageReference "ViewScrapbook" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cloudsquare22/ViewScrapbook";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -380,6 +392,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8D997BC7275F80E0000E4607 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		8D9A33022762305D003E445A /* ViewScrapbook */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8D9A33012762305D003E445A /* XCRemoteSwiftPackageReference "ViewScrapbook" */;
+			productName = ViewScrapbook;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
