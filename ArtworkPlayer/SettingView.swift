@@ -8,13 +8,52 @@
 import SwiftUI
 
 struct SettingView: View {
+    @EnvironmentObject var music: Music
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            Form {
+                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                AboutView()
+            }
+            .navigationTitle("Setting")
+            .navigationBarTitleDisplayMode(.large)
+        }
     }
 }
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
         SettingView()
+    }
+}
+
+struct AboutView: View {
+    let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+
+    var body: some View {
+        Section(header: Text("About")) {
+            VStack() {
+                HStack {
+                    Spacer()
+                    Text("Artwork Player")
+                        .font(.largeTitle)
+//                        .font(Font.custom("HiraMinProN-W6", size: 32))
+                    Spacer()
+                }
+                HStack {
+                    Spacer()
+                    Text("Version \(version)")
+                    Spacer()
+                }
+                HStack {
+                    Spacer()
+                    Image("cloudsquare")
+                    Text("©️ 2021 cloudsquare.jp")
+                        .font(.footnote)
+                    Spacer()
+                }
+            }
+        }
     }
 }
