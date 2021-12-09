@@ -99,6 +99,6 @@ struct AlbumInformationView: View {
             Label(information.0, systemImage: "opticaldisc")
             Label(information.1, systemImage: "person")
         }
-        .padding(8.0)
+        .padding(16.0)
     }
 }
