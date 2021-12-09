@@ -63,9 +63,12 @@ struct ArtworkView: View {
             .scaledToFit()
             .frame(width: 98, height: 98, alignment: .center)
             .clipShape(Circle())
-            .onTapGesture {
+            .onTapGesture(count: 2) {
                 self.music.play(collection: self.collection)
             }
+//            .onTapGesture {
+//                self.music.play(collection: self.collection)
+//            }
             .onLongPressGesture(perform: {
                 self.isShowingPopover.toggle()
             })
@@ -82,15 +85,19 @@ struct AlbumInformationView: View {
 
     var body: some View {
         let information = self.music.albumInformation(item: item)
-        VStack {
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            },
-                   label: {
-                Image(systemName: "xmark.circle")
-            })
-            Text(information.0)
-            Text(information.1)
+        VStack(alignment: .leading, spacing: 4.0) {
+            HStack {
+                Spacer()
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                },
+                       label: {
+                    Image(systemName: "xmark.circle")
+                })
+                Spacer()
+            }
+            Label(information.0, systemImage: "opticaldisc")
+            Label(information.1, systemImage: "person")
         }
         .padding(8.0)
     }
