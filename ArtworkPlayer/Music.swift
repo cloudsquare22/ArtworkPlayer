@@ -11,7 +11,9 @@ import Algorithms
 
 final class Music: ObservableObject {
     var player: MPMusicPlayerController! = MPMusicPlayerController.systemMusicPlayer
-    @Published var viewCollections: [MPMediaItemCollection] = []
+    @Published var viewCollections: [MPMediaItemCollectionWithId] = []
+    @Published var iCloud = false
+    @Published var shufflePlay = false
     @Published var minTracks: Int = 6
     
     init() {
@@ -29,11 +31,12 @@ final class Music: ObservableObject {
         let mPMediaQuery = MPMediaQuery.albums()
         if let collections = mPMediaQuery.collections {
             print(collections.count)
-            let randomcollections = collections.randomSample(count: collections.count)
+            let randomcollections = collections.randomSample(count: collections.count).filter({collection in collection.items.count >= self.minTracks})
+            print(randomcollections.count)
 
             var loopTo = viewCount
-            if collections.count < viewCount {
-                loopTo = collections.count
+            if randomcollections.count < viewCount {
+                loopTo = randomcollections.count
             }
             if loopTo == viewCount {
                 loopTo = loopTo - 2
@@ -43,22 +46,21 @@ final class Music: ObservableObject {
             }
 
             for index in 0..<loopTo {
-                self.viewCollections.append(randomcollections[index])
+                let mPMediaItemCollectionWithId = MPMediaItemCollectionWithId(item: randomcollections[index])
+                self.viewCollections.append(mPMediaItemCollectionWithId)
             }
         }
-        self.viewCollections = self.viewCollections.randomSample(count: self.viewCollections.count)
         print(self.viewCollections.count)
     }
     
-    func artwork(item: MPMediaItem) -> UIImage {
-        var result: UIImage? = nil
+    func artwork(item: MPMediaItem) -> Image {
+        var result: Image = Image(systemName: "opticaldisc")
         if let value = item.value(forProperty: MPMediaItemPropertyArtwork) as? MPMediaItemArtwork {
-            result = value.image(at: CGSize(width: value.bounds.width, height: value.bounds.height))
+            if let image = value.image(at: CGSize(width: value.bounds.width, height: value.bounds.height)) {
+                result = Image(uiImage: image)
+            }
         }
-        else {
-            result = UIImage(systemName: "opticaldisc")
-        }
-        return result!
+        return result
     }
     
     func albumInformation(item: MPMediaItem) -> (String, String) {
@@ -79,8 +81,15 @@ final class Music: ObservableObject {
     
     func play(collection: MPMediaItemCollection) {
         self.player.setQueue(with: collection)
-        self.player.shuffleMode = .songs
+        if self.shufflePlay == true {
+            self.player.shuffleMode = .songs
+        }
         self.player.play()
     }
 
+}
+
+struct MPMediaItemCollectionWithId: Identifiable {
+    var id = UUID()
+    var item: MPMediaItemCollection
 }

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import ViewScrapbook
 
 struct SettingView: View {
     @EnvironmentObject var music: Music
@@ -14,7 +13,7 @@ struct SettingView: View {
     var body: some View {
         NavigationView {
             Form {
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                FilterSettingView()
                 AboutView()
             }
             .navigationTitle("Setting")
@@ -33,8 +32,14 @@ struct FilterSettingView: View {
     @EnvironmentObject var music: Music
 
     var body: some View {
-        Section(header: Label("Album Shuffle", systemImage: "opticaldisc")) {
-//            NumberPlusMinusInputView(title: NSLocalizedString("Select min tracks", comment: ""), bounds: 1...100, number: self.$music.minTracks)
+        Section(header: Label("Filter", systemImage: "slider.horizontal.3")) {
+            Toggle(isOn: self.$music.iCloud, label: {
+                Text("Use iCloud")
+            })
+            Toggle(isOn: self.$music.shufflePlay, label: {
+                Text("Shuffle Play")
+            })
+            NumberPlusMinusInputView(title: NSLocalizedString("Select min tracks", comment: ""), bounds: 1...100, number: self.$music.minTracks)
         }
     }
 }

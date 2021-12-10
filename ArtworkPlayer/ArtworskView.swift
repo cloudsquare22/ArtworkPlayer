@@ -18,8 +18,8 @@ struct ArtworskView: View {
               let width = geometry.size.width / CGFloat(lineCount)
 //              ScrollView {
                   LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: lineCount), alignment: .center, spacing: 0.0) {
-                      ForEach(0..<self.music.viewCollections.count) { index in
-                          ArtworkView(collection: self.music.viewCollections[index])
+                      ForEach(self.music.viewCollections) { collection in
+                          ArtworkView(collection: collection.item)
                       }
                       Image(systemName: "gear")
                           .resizable()
@@ -58,7 +58,7 @@ struct ArtworkView: View {
     
     var body: some View {
         let artwork = self.music.artwork(item: collection.representativeItem!)
-        Image(uiImage: artwork)
+        artwork
             .resizable()
             .scaledToFit()
             .frame(width: 98, height: 98, alignment: .center)
