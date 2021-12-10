@@ -27,8 +27,13 @@ final class Music: ObservableObject {
         print((columnCount * lineCount))
         let viewCount = columnCount * lineCount
                 
+        let iCloudFilter = MPMediaPropertyPredicate(value: self.iCloud,
+                                                    forProperty: MPMediaItemPropertyIsCloudItem,
+                                                    comparisonType: .equalTo)
+
         self.viewCollections = []
         let mPMediaQuery = MPMediaQuery.albums()
+        mPMediaQuery.addFilterPredicate(iCloudFilter)
         if let collections = mPMediaQuery.collections {
             print(collections.count)
             let randomcollections = collections.randomSample(count: collections.count).filter({collection in collection.items.count >= self.minTracks})
