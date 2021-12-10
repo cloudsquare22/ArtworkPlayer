@@ -66,12 +66,13 @@ struct ArtworkView: View {
             .onTapGesture(count: 2) {
                 self.music.play(collection: self.collection)
             }
-//            .onTapGesture {
-//                self.music.play(collection: self.collection)
-//            }
-            .onLongPressGesture(perform: {
+            .onTapGesture {
                 self.isShowingPopover.toggle()
-            })
+//                self.music.play(collection: self.collection)
+            }
+//            .onLongPressGesture(perform: {
+//                self.isShowingPopover.toggle()
+//            })
             .popover(isPresented: $isShowingPopover) {
                 AlbumInformationView(item: collection.representativeItem!)
             }
