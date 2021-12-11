@@ -16,8 +16,29 @@ final class Music: ObservableObject {
     @Published var shufflePlay = false
     @Published var minTracks: Int = 6
     
+    let userdefault = UserDefaults.standard
+
     init() {
+        self.load()
         self.albums()
+    }
+    
+    func load() {
+        if let iCloud = userdefault.object(forKey: "iCloud") as? Bool {
+            self.iCloud = iCloud
+        }
+        if let shufflePlay = userdefault.object(forKey: "shufflePlay") as? Bool {
+            self.shufflePlay = shufflePlay
+        }
+        if let minTracks = userdefault.object(forKey: "minTracks") as? Int {
+            self.minTracks = minTracks
+        }
+    }
+    
+    func save() {
+        self.userdefault.set(self.iCloud, forKey: "iCloud")
+        self.userdefault.set(self.shufflePlay, forKey: "shufflePlay")
+        self.userdefault.set(self.minTracks, forKey: "minTracks")
     }
 
     func albums() {

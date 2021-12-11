@@ -36,10 +36,19 @@ struct FilterSettingView: View {
             Toggle(isOn: self.$music.iCloud, label: {
                 Text("Use iCloud")
             })
+                .onChange(of: self.music.iCloud) {newValue in
+                    self.music.save()
+                }
             Toggle(isOn: self.$music.shufflePlay, label: {
                 Text("Shuffle Play")
             })
+                .onChange(of: self.music.shufflePlay) {newValue in
+                    self.music.save()
+                }
             NumberPlusMinusInputView(title: NSLocalizedString("Select min tracks", comment: ""), bounds: 1...100, number: self.$music.minTracks)
+                .onChange(of: self.music.minTracks) {newValue in
+                    self.music.save()
+                }
         }
     }
 }
