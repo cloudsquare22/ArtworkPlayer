@@ -16,6 +16,11 @@ final class Music: ObservableObject {
     @Published var shufflePlay = false
     @Published var minTracks: Int = 6
     
+    let columnCount = Int(UIScreen.main.bounds.width / 122)
+    let lineCount = Int(UIScreen.main.bounds.height / 122)
+    var viewCount:  Int  {
+        self.columnCount * self.lineCount
+    }
     let userdefault = UserDefaults.standard
 
     init() {
@@ -43,10 +48,7 @@ final class Music: ObservableObject {
 
     func albums() {
         print(UIScreen.main.bounds.size)
-        let columnCount = Int(UIScreen.main.bounds.width / 122)
-        let lineCount = Int(UIScreen.main.bounds.height / 122)
-        print((columnCount * lineCount))
-        let viewCount = columnCount * lineCount
+        print((self.columnCount * self.lineCount))
                 
         let iCloudFilter = MPMediaPropertyPredicate(value: self.iCloud,
                                                     forProperty: MPMediaItemPropertyIsCloudItem,
@@ -60,14 +62,14 @@ final class Music: ObservableObject {
             let randomcollections = collections.randomSample(count: collections.count).filter({collection in collection.items.count >= self.minTracks})
             print(randomcollections.count)
 
-            var loopTo = viewCount
-            if randomcollections.count < viewCount {
+            var loopTo = self.viewCount
+            if randomcollections.count < self.viewCount {
                 loopTo = randomcollections.count
             }
-            if loopTo == viewCount {
+            if loopTo == self.viewCount {
                 loopTo = loopTo - 2
             }
-            else if(loopTo == viewCount - 1) {
+            else if(loopTo == self.viewCount - 1) {
                 loopTo = loopTo - 1
             }
 

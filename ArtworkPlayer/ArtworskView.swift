@@ -14,30 +14,34 @@ struct ArtworskView: View {
 
     var body: some View {
         GeometryReader { geometry in
-              let lineCount = Int(geometry.size.width / 122)
-              let width = geometry.size.width / CGFloat(lineCount)
-              LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: lineCount), alignment: .center, spacing: 0.0) {
-                  ForEach(0..<self.music.viewCollections.count, id: \.self) { index in
-                      ArtworkView(collection: self.music.viewCollections[index])
-                  }
-                  Image(systemName: "gear")
-                      .resizable()
-                      .frame(width: 120, height: 120, alignment: .center)
-                      .clipShape(Circle())
-                      .onTapGesture {
-                          self.isShowingSettingView.toggle()
-                      }
-                      .sheet(isPresented: self.$isShowingSettingView, onDismiss: {}, content: {
-                          SettingView()
-                      })
-                  Image(systemName: "arrow.clockwise.circle")
-                      .resizable()
-                      .frame(width: 118, height: 118, alignment: .center)
-                      .clipShape(Circle())
-                      .onTapGesture {
-                          self.music.albums()
-                      }
+            VStack {
+                Spacer()
+                let width = geometry.size.width / CGFloat(self.music.columnCount)
+                LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: self.music.columnCount), alignment: .center, spacing: 0.0) {
+                    ForEach(0..<self.music.viewCollections.count, id: \.self) { index in
+                        ArtworkView(collection: self.music.viewCollections[index])
+                    }
+                    Image(systemName: "gear")
+                        .resizable()
+                        .frame(width: 120, height: 120, alignment: .center)
+                        .clipShape(Circle())
+                        .onTapGesture {
+                            self.isShowingSettingView.toggle()
+                            
+                        }
+                        .sheet(isPresented: self.$isShowingSettingView, onDismiss: {}, content: {
+                            SettingView()
+                        })
+                    Image(systemName: "arrow.clockwise.circle")
+                        .resizable()
+                        .frame(width: 118, height: 118, alignment: .center)
+                        .clipShape(Circle())
+                        .onTapGesture {
+                            self.music.albums()                            
+                        }
               }
+                Spacer()
+            }
         }
     }
 }
