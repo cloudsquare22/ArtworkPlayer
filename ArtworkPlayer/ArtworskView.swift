@@ -75,7 +75,7 @@ struct ArtworkView: View {
 //                self.isShowingPopover.toggle()
 //            })
             .popover(isPresented: $isShowingPopover) {
-                AlbumInformationView(item: collection.representativeItem!)
+                AlbumInformationView(collection: self.collection)
             }
     }
 }
@@ -83,23 +83,44 @@ struct ArtworkView: View {
 struct AlbumInformationView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var music: Music
-    var item: MPMediaItem
+    var collection: MPMediaItemCollection
 
     var body: some View {
+        let item = self.collection.representativeItem!
         let information = self.music.albumInformation(item: item)
         VStack(alignment: .leading, spacing: 4.0) {
+//            HStack {
+//                Spacer()
+//                Button(action: {
+//                    self.presentationMode.wrappedValue.dismiss()
+//                },
+//                       label: {
+//                    Image(systemName: "xmark.circle")
+//                })
+//                Spacer()
+//            }
+            Label(information.0, systemImage: "opticaldisc")
+            Label(information.1, systemImage: "person")
+            HStack {
+                Spacer()
+                let artwork = self.music.artwork(item: item)
+                artwork
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300, height: 300, alignment: .center)
+                Spacer()
+            }
             HStack {
                 Spacer()
                 Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
+                    self.music.play(collection: self.collection)
                 },
                        label: {
-                    Image(systemName: "xmark.circle")
+                    Image(systemName: "play")
+                        .font(.title)
                 })
                 Spacer()
             }
-            Label(information.0, systemImage: "opticaldisc")
-            Label(information.1, systemImage: "person")
         }
         .padding(16.0)
     }
