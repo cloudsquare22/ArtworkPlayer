@@ -22,8 +22,8 @@ final class Music: ObservableObject {
 
     func albums() {
         print(UIScreen.main.bounds.size)
-        let columnCount = Int(UIScreen.main.bounds.width / 100)
-        let lineCount = Int(UIScreen.main.bounds.height / 100)
+        let columnCount = Int(UIScreen.main.bounds.width / 122)
+        let lineCount = Int(UIScreen.main.bounds.height / 122)
         print((columnCount * lineCount))
         let viewCount = columnCount * lineCount
                 
