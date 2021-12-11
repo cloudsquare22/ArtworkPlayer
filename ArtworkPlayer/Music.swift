@@ -11,7 +11,7 @@ import Algorithms
 
 final class Music: ObservableObject {
     var player: MPMusicPlayerController! = MPMusicPlayerController.systemMusicPlayer
-    @Published var viewCollections: [MPMediaItemCollectionWithId] = []
+    @Published var viewCollections: [MPMediaItemCollection] = []
     @Published var iCloud = false
     @Published var shufflePlay = false
     @Published var minTracks: Int = 6
@@ -51,8 +51,7 @@ final class Music: ObservableObject {
             }
 
             for index in 0..<loopTo {
-                let mPMediaItemCollectionWithId = MPMediaItemCollectionWithId(item: randomcollections[index])
-                self.viewCollections.append(mPMediaItemCollectionWithId)
+                self.viewCollections.append(randomcollections[index])
             }
         }
         print(self.viewCollections.count)
@@ -92,9 +91,4 @@ final class Music: ObservableObject {
         self.player.play()
     }
 
-}
-
-struct MPMediaItemCollectionWithId: Identifiable {
-    var id = UUID()
-    var item: MPMediaItemCollection
 }
