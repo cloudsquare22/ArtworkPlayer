@@ -15,7 +15,7 @@ struct ArtworskView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Spacer()
+//                Spacer()
                 let width = geometry.size.width / CGFloat(self.music.columnCount)
                 LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: self.music.columnCount), alignment: .center, spacing: 0.0) {
                     ForEach(0..<self.music.viewCollections.count, id: \.self) { index in
@@ -39,8 +39,8 @@ struct ArtworskView: View {
                         .onTapGesture {
                             self.music.albums()                            
                         }
-              }
-                Spacer()
+                }
+//                Spacer()
             }
         }
     }
