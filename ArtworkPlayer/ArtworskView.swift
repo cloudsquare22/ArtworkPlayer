@@ -16,8 +16,9 @@ struct ArtworskView: View {
         GeometryReader { geometry in
             VStack {
 //                Spacer()
-                let width = geometry.size.width / CGFloat(self.music.columnCount)
-                LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: self.music.columnCount), alignment: .center, spacing: 0.0) {
+                let columnCount = Int(geometry.size.width / 122)
+                let width = geometry.size.width / CGFloat(columnCount)
+                LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: columnCount), alignment: .center, spacing: 0.0) {
                     ForEach(0..<self.music.viewCollections.count, id: \.self) { index in
                         ArtworkView(collection: self.music.viewCollections[index])
                     }
