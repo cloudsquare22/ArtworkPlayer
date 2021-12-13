@@ -66,7 +66,7 @@ struct ArtworkView: View {
             .frame(width: 120, height: 120, alignment: .center)
             .clipShape(Circle())
             .onTapGesture(count: 2) {
-                self.music.play(collection: self.collection)
+                self.music.play(collection: self.collection, shuffle: self.music.shufflePlay)
             }
             .onTapGesture {
                 self.isShowingPopover.toggle()
@@ -111,16 +111,41 @@ struct AlbumInformationView: View {
                     .frame(width: 300, height: 300, alignment: .center)
                 Spacer()
             }
+            .padding(4)
             HStack {
-                Spacer()
                 Button(action: {
-                    self.music.play(collection: self.collection)
+                    self.music.play(collection: self.collection, shuffle: false)
                 },
                        label: {
-                    Image(systemName: "play")
-                        .font(.title)
+                    Label("All play", systemImage: "play.circle")
+                    Spacer()
                 })
-                Spacer()
+                    .buttonStyle(.bordered)
+                Button(action: {
+                    self.music.play(collection: self.collection, shuffle: true)
+                },
+                       label: {
+                    Label("Shuffle play", systemImage: "shuffle.circle")
+                    Spacer()
+                })
+                    .buttonStyle(.bordered)
+            }
+            .padding(2)
+            ScrollView {
+                ForEach(0..<self.collection.items.count, id: \.self) { index in
+                    HStack {
+                        Button(action: {
+                            self.music.play(collection: MPMediaItemCollection(items: [self.collection.items[index]]), shuffle: false)
+                        }, label: {
+                            Label(self.collection.items[index].title!, systemImage: "music.note")
+                            Spacer()
+                        })
+                            .buttonStyle(.bordered)
+//                        Image(systemName: "music.note")
+//                        Text("\(self.collection.items[index].title!)")
+                    }
+                    .padding(2)
+                }
             }
         }
         .padding(16.0)

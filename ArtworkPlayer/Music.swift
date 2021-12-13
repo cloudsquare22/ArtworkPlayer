@@ -107,9 +107,15 @@ final class Music: ObservableObject {
         return result
     }
     
-    func play(collection: MPMediaItemCollection) {
+    func printMPMediaItemCollection(collection: MPMediaItemCollection) {
+        for item in collection.items {
+            print(item.title!)
+        }
+    }
+    
+    func play(collection: MPMediaItemCollection, shuffle: Bool) {
         self.player.setQueue(with: collection)
-        if self.shufflePlay == true {
+        if shuffle == true {
             self.player.shuffleMode = .songs
         }
         self.player.play()
