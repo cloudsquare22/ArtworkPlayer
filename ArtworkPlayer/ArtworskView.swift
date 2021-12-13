@@ -144,9 +144,9 @@ struct AlbumInformationView: View {
 //                        Image(systemName: "music.note")
 //                        Text("\(self.collection.items[index].title!)")
                     }
-                    .padding(2)
                 }
             }
+            .padding(2)
         }
         .padding(16.0)
     }
