@@ -16,7 +16,7 @@ struct ArtworskView: View {
         GeometryReader { geometry in
             VStack {
 //                Spacer()
-                let columnCount = Int(geometry.size.width / 122)
+                let columnCount = Int(geometry.size.width / Music.ARTWORKSIZE)
                 let width = geometry.size.width / CGFloat(columnCount)
                 LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: columnCount), alignment: .center, spacing: 0.0) {
                     ForEach(0..<self.music.viewCollections.count, id: \.self) { index in
@@ -24,7 +24,7 @@ struct ArtworskView: View {
                     }
                     Image(systemName: "gear")
                         .resizable()
-                        .frame(width: 120, height: 120, alignment: .center)
+                        .frame(width: Music.ARTWORKSIZE - 2, height: Music.ARTWORKSIZE - 2, alignment: .center)
                         .clipShape(Circle())
                         .onTapGesture {
                             self.isShowingSettingView.toggle()
@@ -35,7 +35,7 @@ struct ArtworskView: View {
                         })
                     Image(systemName: "arrow.clockwise.circle")
                         .resizable()
-                        .frame(width: 118, height: 118, alignment: .center)
+                        .frame(width: Music.ARTWORKSIZE - 4, height: Music.ARTWORKSIZE - 4, alignment: .center)
                         .clipShape(Circle())
                         .onTapGesture {
                             self.music.albums()                            
@@ -63,7 +63,7 @@ struct ArtworkView: View {
         artwork
             .resizable()
             .scaledToFit()
-            .frame(width: 120, height: 120, alignment: .center)
+            .frame(width: Music.ARTWORKSIZE - 2, height: Music.ARTWORKSIZE - 2, alignment: .center)
             .clipShape(Circle())
             .onTapGesture(count: 2) {
                 self.music.play(collection: self.collection, shuffle: self.music.shufflePlay)

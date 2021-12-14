@@ -16,8 +16,10 @@ final class Music: ObservableObject {
     @Published var shufflePlay = false
     @Published var minTracks: Int = 6
     
-    let columnCount = Int(UIScreen.main.bounds.width / 122)
-    let lineCount = Int(UIScreen.main.bounds.height / 122)
+    static let ARTWORKSIZE: CGFloat = 122
+    
+    let columnCount = Int(UIScreen.main.bounds.width / Music.ARTWORKSIZE)
+    let lineCount = Int(UIScreen.main.bounds.height / Music.ARTWORKSIZE)
     var viewCount:  Int  {
         self.columnCount * self.lineCount
     }
