@@ -63,7 +63,6 @@ struct AboutView: View {
                     Spacer()
                     Text("Artwork Player")
                         .font(.largeTitle)
-//                        .font(Font.custom("HiraMinProN-W6", size: 32))
                     Spacer()
                 }
                 HStack {
