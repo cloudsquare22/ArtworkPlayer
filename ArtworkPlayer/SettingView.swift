@@ -46,7 +46,7 @@ struct FilterSettingView: View {
                 .onChange(of: self.music.shufflePlay) {newValue in
                     self.music.save()
                 }
-            NumberPlusMinusInputView(title: NSLocalizedString("Select min tracks", comment: ""), bounds: 1...100, number: self.$music.minTracks)
+            NumberPlusMinusInputView(title: NSLocalizedString("Disp min tracks", comment: ""), bounds: 1...100, number: self.$music.minTracks)
                 .onChange(of: self.music.minTracks) {newValue in
                     self.music.save()
                 }

@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  ArtworkPlayer
+
+  Created by Shin Inaba on 2021/12/15.
+  
+*/
+"Setting" = "設定";
+"Filter" = "表示条件";
+"Use iCloud" = "iCloud使用";
+"Shuffle Play" = "シャッフル再生";
+"Disp min tracks" = "表示最小曲数";
+"Disp" = "アートワーク表示";
+"Large Artwork Size" = "アートワーク表示大";
+"About" = "Artwork Playerについて";

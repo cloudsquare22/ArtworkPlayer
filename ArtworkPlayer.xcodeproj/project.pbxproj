@@ -16,6 +16,8 @@
 		8D997BC9275F80E0000E4607 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 8D997BC8275F80E0000E4607 /* Algorithms */; };
 		8D997BCB2760E39E000E4607 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D997BCA2760E39E000E4607 /* SettingView.swift */; };
 		8D9A3308276377C6003E445A /* NumberPlusMinusInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9A3307276377C6003E445A /* NumberPlusMinusInputView.swift */; };
+		8DDDC22E276A10D70050A235 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8DDDC230276A10D70050A235 /* InfoPlist.strings */; };
+		8DDDC234276A12A60050A235 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8DDDC236276A12A60050A235 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		8D997BC5275F787D000E4607 /* ArtworskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworskView.swift; sourceTree = "<group>"; };
 		8D997BCA2760E39E000E4607 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		8D9A3307276377C6003E445A /* NumberPlusMinusInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPlusMinusInputView.swift; sourceTree = "<group>"; };
+		8DDDC231276A10E80050A235 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8DDDC235276A12A60050A235 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				8D997BC5275F787D000E4607 /* ArtworskView.swift */,
 				8D997BCA2760E39E000E4607 /* SettingView.swift */,
 				8D9A3307276377C6003E445A /* NumberPlusMinusInputView.swift */,
+				8DDDC230276A10D70050A235 /* InfoPlist.strings */,
+				8DDDC236276A12A60050A235 /* Localizable.strings */,
 			);
 			path = ArtworkPlayer;
 			sourceTree = "<group>";
@@ -126,6 +132,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 8D997BA6275F7798000E4607;
 			packageReferences = (
@@ -146,6 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D997BBA275F779B000E4607 /* Preview Assets.xcassets in Resources */,
+				8DDDC234276A12A60050A235 /* Localizable.strings in Resources */,
+				8DDDC22E276A10D70050A235 /* InfoPlist.strings in Resources */,
 				8D997BB7275F779B000E4607 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,11 +177,31 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		8DDDC230276A10D70050A235 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8DDDC231276A10E80050A235 /* ja */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8DDDC236276A12A60050A235 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8DDDC235276A12A60050A235 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		8D997BBB275F779B000E4607 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -234,6 +263,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -296,7 +326,7 @@
 				DEVELOPMENT_TEAM = 385NJ9XLA7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Use Media Inforamtion.";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Access to music selection, information display, and playback.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -326,7 +356,7 @@
 				DEVELOPMENT_TEAM = 385NJ9XLA7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Use Media Inforamtion.";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Access to music selection, information display, and playback.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
