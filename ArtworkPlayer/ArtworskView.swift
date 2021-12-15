@@ -15,13 +15,10 @@ struct ArtworskView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-//                Spacer()
+                Spacer()
                 let columnCount = Int(geometry.size.width / self.music.artworkSize)
                 let width = geometry.size.width / CGFloat(columnCount)
                 LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: columnCount), alignment: .center, spacing: 0.0) {
-                    ForEach(0..<self.music.viewCollections.count, id: \.self) { index in
-                        ArtworkView(collection: self.music.viewCollections[index])
-                    }
                     Image(systemName: "gear")
                         .resizable()
                         .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
@@ -33,6 +30,10 @@ struct ArtworskView: View {
                         .sheet(isPresented: self.$isShowingSettingView, onDismiss: {}, content: {
                             SettingView()
                         })
+                    ForEach(0..<self.music.viewCollections.count, id: \.self) { index in
+                        ArtworkView(collection: self.music.viewCollections[index])
+                    }
+
                     Image(systemName: "arrow.clockwise.circle")
                         .resizable()
                         .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
@@ -41,7 +42,7 @@ struct ArtworskView: View {
                             self.music.albums()                            
                         }
                 }
-//                Spacer()
+                Spacer()
             }
         }
     }
