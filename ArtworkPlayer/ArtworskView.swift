@@ -33,7 +33,6 @@ struct ArtworskView: View {
                     ForEach(0..<self.music.viewCollections.count, id: \.self) { index in
                         ArtworkView(collection: self.music.viewCollections[index])
                     }
-
                     Image(systemName: "arrow.clockwise.circle")
                         .resizable()
                         .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
