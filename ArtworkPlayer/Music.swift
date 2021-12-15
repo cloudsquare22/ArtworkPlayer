@@ -15,15 +15,20 @@ final class Music: ObservableObject {
     @Published var iCloud = false
     @Published var shufflePlay = false
     @Published var minTracks: Int = 6
+    @Published var artworkSizeLarge = false
     
-    static let ARTWORKSIZE: CGFloat = 122
+    static let ARTWORKSIZE_SMALL: CGFloat = 122
+    static let ARTWORKSIZE_LARGE: CGFloat = 180
     
-    let columnCount = Int(UIScreen.main.bounds.width / Music.ARTWORKSIZE)
-    let lineCount = Int(UIScreen.main.bounds.height / Music.ARTWORKSIZE)
     var viewCount:  Int  {
-        self.columnCount * self.lineCount
+        let columnCount = Int(UIScreen.main.bounds.width / self.artworkSize)
+        let lineCount = Int(UIScreen.main.bounds.height / self.artworkSize)
+        return columnCount * lineCount
     }
     let userdefault = UserDefaults.standard
+    var artworkSize: CGFloat {
+        self.artworkSizeLarge == true ? Music.ARTWORKSIZE_LARGE : Music.ARTWORKSIZE_SMALL
+    }
 
     init() {
         self.load()
@@ -40,17 +45,20 @@ final class Music: ObservableObject {
         if let minTracks = userdefault.object(forKey: "minTracks") as? Int {
             self.minTracks = minTracks
         }
+        if let artworkSizeLarge = userdefault.object(forKey: "artworkSizeLarge") as? Bool {
+            self.artworkSizeLarge = artworkSizeLarge
+        }
     }
     
     func save() {
         self.userdefault.set(self.iCloud, forKey: "iCloud")
         self.userdefault.set(self.shufflePlay, forKey: "shufflePlay")
         self.userdefault.set(self.minTracks, forKey: "minTracks")
+        self.userdefault.set(self.artworkSizeLarge, forKey: "artworkSizeLarge")
     }
 
     func albums() {
         print(UIScreen.main.bounds.size)
-        print((self.columnCount * self.lineCount))
                 
         let iCloudFilter = MPMediaPropertyPredicate(value: self.iCloud,
                                                     forProperty: MPMediaItemPropertyIsCloudItem,

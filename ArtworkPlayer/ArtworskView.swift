@@ -16,7 +16,7 @@ struct ArtworskView: View {
         GeometryReader { geometry in
             VStack {
 //                Spacer()
-                let columnCount = Int(geometry.size.width / Music.ARTWORKSIZE)
+                let columnCount = Int(geometry.size.width / self.music.artworkSize)
                 let width = geometry.size.width / CGFloat(columnCount)
                 LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: columnCount), alignment: .center, spacing: 0.0) {
                     ForEach(0..<self.music.viewCollections.count, id: \.self) { index in
@@ -24,7 +24,7 @@ struct ArtworskView: View {
                     }
                     Image(systemName: "gear")
                         .resizable()
-                        .frame(width: Music.ARTWORKSIZE - 2, height: Music.ARTWORKSIZE - 2, alignment: .center)
+                        .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
                         .clipShape(Circle())
                         .onTapGesture {
                             self.isShowingSettingView.toggle()
@@ -35,7 +35,7 @@ struct ArtworskView: View {
                         })
                     Image(systemName: "arrow.clockwise.circle")
                         .resizable()
-                        .frame(width: Music.ARTWORKSIZE - 4, height: Music.ARTWORKSIZE - 4, alignment: .center)
+                        .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
                         .clipShape(Circle())
                         .onTapGesture {
                             self.music.albums()                            
@@ -63,7 +63,7 @@ struct ArtworkView: View {
         artwork
             .resizable()
             .scaledToFit()
-            .frame(width: Music.ARTWORKSIZE - 2, height: Music.ARTWORKSIZE - 2, alignment: .center)
+            .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
             .clipShape(Circle())
             .onTapGesture(count: 2) {
                 self.music.play(collection: self.collection, shuffle: self.music.shufflePlay)
