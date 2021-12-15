@@ -14,6 +14,7 @@ struct SettingView: View {
         NavigationView {
             Form {
                 FilterSettingView()
+                DispSettingView()
                 AboutView()
             }
             .navigationTitle("Setting")
@@ -48,6 +49,22 @@ struct FilterSettingView: View {
             NumberPlusMinusInputView(title: NSLocalizedString("Select min tracks", comment: ""), bounds: 1...100, number: self.$music.minTracks)
                 .onChange(of: self.music.minTracks) {newValue in
                     self.music.save()
+                }
+        }
+    }
+}
+
+struct DispSettingView: View {
+    @EnvironmentObject var music: Music
+
+    var body: some View {
+        Section(header: Label("Disp", systemImage: "circle.grid.3x3.fill")) {
+            Toggle(isOn: self.$music.artworkSizeLarge, label: {
+                Text("Large Artwork Size")
+            })
+                .onChange(of: self.music.artworkSizeLarge) {newValue in
+                    self.music.save()
+                    self.music.albums()
                 }
         }
     }
