@@ -16,6 +16,7 @@ final class Music: ObservableObject {
     @Published var shufflePlay = false
     @Published var minTracks: Int = 6
     @Published var artworkSizeLarge = false
+    @Published var backGroundColor: Int = 0
     
     static let ARTWORKSIZE_SMALL: CGFloat = 120
     static let ARTWORKSIZE_LARGE: CGFloat = 180
@@ -129,5 +130,17 @@ final class Music: ObservableObject {
         }
         self.player.play()
     }
-
+    
+    func toColor(selct: Int) -> Color {
+        var result: Color = .secondary
+        switch(selct) {
+        case 1:
+            result = .blue
+        case 2:
+            result = .brown
+        default:
+            result = .secondary
+        }
+        return result
+    }
 }

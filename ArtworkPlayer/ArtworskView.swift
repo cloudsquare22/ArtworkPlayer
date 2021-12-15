@@ -44,6 +44,7 @@ struct ArtworskView: View {
                 Spacer()
             }
         }
+        .background(self.music.toColor(selct: self.music.backGroundColor))
     }
 }
 

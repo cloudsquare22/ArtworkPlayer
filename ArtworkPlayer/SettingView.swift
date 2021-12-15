@@ -56,6 +56,7 @@ struct FilterSettingView: View {
 
 struct DispSettingView: View {
     @EnvironmentObject var music: Music
+    @State var color: Color = .secondary
 
     var body: some View {
         Section(header: Label("Disp", systemImage: "circle.grid.3x3.fill")) {
@@ -66,6 +67,28 @@ struct DispSettingView: View {
                     self.music.save()
                     self.music.albums()
                 }
+            Picker(selection: self.$music.backGroundColor, content: {
+                Text("Default")
+                    .tag(0)
+                Image(systemName: "paintpalette.fill")
+                    .foregroundColor(.blue)
+                    .tag(1)
+                Image(systemName: "paintpalette.fill")
+                    .foregroundColor(.brown)
+                    .tag(2)
+                Image(systemName: "paintpalette.fill")
+                    .foregroundColor(.cyan)
+                    .tag(3)
+                Image(systemName: "paintpalette.fill")
+                    .foregroundColor(.gray)
+                    .tag(4)
+                Image(systemName: "paintpalette.fill")
+                    .foregroundColor(.green)
+                    .tag(5)
+            }, label: {
+                
+            })
+//                .pickerStyle(SegmentedPickerStyle())
         }
     }
 }
