@@ -81,6 +81,13 @@ struct DispSettingView: View {
                 .onChange(of: self.music.backgroundColor) {newValue in
                     self.music.save()
                 }
+            Toggle(isOn: self.$music.circleShape, label: {
+                Text("Artwork of circle shape")
+            })
+                .onChange(of: self.music.circleShape) {newValue in
+//                    self.music.save()
+                    self.music.albums()
+                }
         }
     }
 }

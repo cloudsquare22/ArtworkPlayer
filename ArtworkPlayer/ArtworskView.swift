@@ -61,24 +61,38 @@ struct ArtworkView: View {
     
     var body: some View {
         let artwork = self.music.artwork(item: collection.representativeItem!)
-        artwork
-            .resizable()
-            .scaledToFit()
-            .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
-            .clipShape(Circle())
-            .onTapGesture(count: 2) {
-                self.music.play(collection: self.collection, shuffle: self.music.shufflePlay)
-            }
-            .onTapGesture {
-                self.isShowingPopover.toggle()
-//                self.music.play(collection: self.collection)
-            }
-//            .onLongPressGesture(perform: {
-//                self.isShowingPopover.toggle()
-//            })
-            .popover(isPresented: $isShowingPopover) {
-                AlbumInformationView(collection: self.collection)
-            }
+        if self.music.circleShape == true {
+            artwork
+                .resizable()
+                .scaledToFit()
+                .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
+                .clipShape(Circle())
+                .onTapGesture(count: 2) {
+                    self.music.play(collection: self.collection, shuffle: self.music.shufflePlay)
+                }
+                .onTapGesture {
+                    self.isShowingPopover.toggle()
+                }
+                .popover(isPresented: $isShowingPopover) {
+                    AlbumInformationView(collection: self.collection)
+                }
+        }
+        else {
+            artwork
+                .resizable()
+                .scaledToFit()
+                .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
+                .onTapGesture(count: 2) {
+                    self.music.play(collection: self.collection, shuffle: self.music.shufflePlay)
+                }
+                .onTapGesture {
+                    self.isShowingPopover.toggle()
+                }
+                .popover(isPresented: $isShowingPopover) {
+                    AlbumInformationView(collection: self.collection)
+                }
+
+        }
     }
 }
 

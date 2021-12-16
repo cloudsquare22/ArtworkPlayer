@@ -17,6 +17,7 @@ final class Music: ObservableObject {
     @Published var minTracks: Int = 6
     @Published var artworkSizeLarge = false
     @Published var backgroundColor: Int = 0
+    @Published var circleShape = true
     
     static let ARTWORKSIZE_SMALL: CGFloat = 120
     static let ARTWORKSIZE_LARGE: CGFloat = 180
