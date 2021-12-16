@@ -16,7 +16,7 @@ final class Music: ObservableObject {
     @Published var shufflePlay = false
     @Published var minTracks: Int = 6
     @Published var artworkSizeLarge = false
-    @Published var backGroundColor: Int = 0
+    @Published var backgroundColor: Int = 0
     
     static let ARTWORKSIZE_SMALL: CGFloat = 120
     static let ARTWORKSIZE_LARGE: CGFloat = 180
@@ -49,6 +49,9 @@ final class Music: ObservableObject {
         if let artworkSizeLarge = userdefault.object(forKey: "artworkSizeLarge") as? Bool {
             self.artworkSizeLarge = artworkSizeLarge
         }
+        if let backgroundColor = userdefault.object(forKey: "backgroundColor") as? Int {
+            self.backgroundColor = backgroundColor
+        }
     }
     
     func save() {
@@ -56,6 +59,7 @@ final class Music: ObservableObject {
         self.userdefault.set(self.shufflePlay, forKey: "shufflePlay")
         self.userdefault.set(self.minTracks, forKey: "minTracks")
         self.userdefault.set(self.artworkSizeLarge, forKey: "artworkSizeLarge")
+        self.userdefault.set(self.backgroundColor, forKey: "backgroundColor")
     }
 
     func albums() {
@@ -131,16 +135,22 @@ final class Music: ObservableObject {
         self.player.play()
     }
     
+    static let SETTINGCOLOR: [(Color, Color)] = [(.white, .black),
+                                                 (.blue, .blue),
+                                                 (.brown, .brown),
+                                                 (.cyan, .cyan),
+                                                 (.gray, .gray),
+                                                 (.green, .green),
+                                                 (.indigo, .indigo),
+                                                 (.mint, .mint),
+                                                 (.orange, .orange),
+                                                 (.pink, .pink),
+                                                 (.purple, .purple),
+                                                 (.red, .red),
+                                                 (.teal, .teal),
+                                                 (.yellow, .yellow)]
+    
     func toColor(selct: Int) -> Color {
-        var result: Color = .secondary
-        switch(selct) {
-        case 1:
-            result = .blue
-        case 2:
-            result = .brown
-        default:
-            result = .secondary
-        }
-        return result
+        UITraitCollection.current.userInterfaceStyle == .light ? Music.SETTINGCOLOR[selct].0 : Music.SETTINGCOLOR[selct].1
     }
 }

@@ -67,28 +67,20 @@ struct DispSettingView: View {
                     self.music.save()
                     self.music.albums()
                 }
-            Picker(selection: self.$music.backGroundColor, content: {
+            Picker(selection: self.$music.backgroundColor, content: {
                 Text("Default")
                     .tag(0)
-                Image(systemName: "paintpalette.fill")
-                    .foregroundColor(.blue)
-                    .tag(1)
-                Image(systemName: "paintpalette.fill")
-                    .foregroundColor(.brown)
-                    .tag(2)
-                Image(systemName: "paintpalette.fill")
-                    .foregroundColor(.cyan)
-                    .tag(3)
-                Image(systemName: "paintpalette.fill")
-                    .foregroundColor(.gray)
-                    .tag(4)
-                Image(systemName: "paintpalette.fill")
-                    .foregroundColor(.green)
-                    .tag(5)
+                ForEach(1..<Music.SETTINGCOLOR.count, id: \.self) { index in
+                    Image(systemName: "paintpalette.fill")
+                        .foregroundColor(Music.SETTINGCOLOR[index].0)
+                        .tag(index)
+                }
             }, label: {
-                
+                Text("Background Color")
             })
-//                .pickerStyle(SegmentedPickerStyle())
+                .onChange(of: self.music.backgroundColor) {newValue in
+                    self.music.save()
+                }
         }
     }
 }
