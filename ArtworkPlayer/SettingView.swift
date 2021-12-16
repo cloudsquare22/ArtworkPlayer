@@ -13,6 +13,7 @@ struct SettingView: View {
     var body: some View {
         NavigationView {
             Form {
+                CommonSettingView()
                 FilterSettingView()
                 DispSettingView()
                 AboutView()
@@ -29,6 +30,20 @@ struct SettingView_Previews: PreviewProvider {
     }
 }
 
+struct CommonSettingView: View {
+    @EnvironmentObject var music: Music
+    
+    var body: some View {
+        Section(header: Label("Common", systemImage: "gearshape.2")) {
+            Toggle(isOn: self.$music.dispOperationArtwork, label: {
+                Text("Disp operation artwork")
+            })
+                .onChange(of: self.music.dispOperationArtwork) {newValue in
+                    self.music.save()
+                }
+        }
+    }
+}
 struct FilterSettingView: View {
     @EnvironmentObject var music: Music
 
