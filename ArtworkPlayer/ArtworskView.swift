@@ -33,6 +33,17 @@ struct ArtworskView: View {
                     ForEach(0..<self.music.viewCollections.count, id: \.self) { index in
                         ArtworkView(collection: self.music.viewCollections[index])
                     }
+                    if self.music.dispOperationArtwork == true {
+                        Text("play")
+                            .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
+                            .clipShape(Circle())
+                            .onTapGesture(count: 2) {
+                                self.music.playNext()
+                            }
+                            .onTapGesture {
+                                self.music.playPause()
+                            }
+                    }
                     Image(systemName: "arrow.clockwise.circle")
                         .resizable()
                         .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)

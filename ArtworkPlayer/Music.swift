@@ -54,6 +54,9 @@ final class Music: ObservableObject {
         if let backgroundColor = userdefault.object(forKey: "backgroundColor") as? Int {
             self.backgroundColor = backgroundColor
         }
+        if let dispOperationArtwork = userdefault.object(forKey: "dispOperationArtwork") as? Bool {
+            self.dispOperationArtwork = dispOperationArtwork
+        }
     }
     
     func save() {
@@ -62,6 +65,7 @@ final class Music: ObservableObject {
         self.userdefault.set(self.minTracks, forKey: "minTracks")
         self.userdefault.set(self.artworkSizeLarge, forKey: "artworkSizeLarge")
         self.userdefault.set(self.backgroundColor, forKey: "backgroundColor")
+        self.userdefault.set(self.dispOperationArtwork, forKey: "dispOperationArtwork")
     }
 
     func albums() {
@@ -133,6 +137,27 @@ final class Music: ObservableObject {
             self.player.shuffleMode = .songs
         }
         self.player.play()
+    }
+    
+    func playPause() {
+        if self.player.playbackState == .playing {
+            self.player.pause()
+        }
+        else {
+            self.player.play()
+        }
+    }
+    
+    func playNext() {
+        if self.player.playbackState == .playing {
+            self.player.skipToNextItem()
+        }
+    }
+    
+    func playPrevious() {
+        if self.player.playbackState == .playing {
+            self.player.skipToPreviousItem()
+        }
     }
     
     static let SETTINGCOLOR: [(Color, Color)] = [(.white, .black),

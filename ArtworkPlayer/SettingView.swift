@@ -40,6 +40,7 @@ struct CommonSettingView: View {
             })
                 .onChange(of: self.music.dispOperationArtwork) {newValue in
                     self.music.save()
+                    self.music.albums()
                 }
         }
     }
@@ -64,6 +65,7 @@ struct FilterSettingView: View {
             NumberPlusMinusInputView(title: NSLocalizedString("Disp min tracks", comment: ""), bounds: 1...100, number: self.$music.minTracks)
                 .onChange(of: self.music.minTracks) {newValue in
                     self.music.save()
+                    self.music.albums()
                 }
         }
     }
@@ -100,7 +102,7 @@ struct DispSettingView: View {
                 Text("Artwork of circle shape")
             })
                 .onChange(of: self.music.circleShape) {newValue in
-//                    self.music.save()
+                    self.music.save()
                     self.music.albums()
                 }
         }
