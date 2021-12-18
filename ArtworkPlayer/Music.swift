@@ -83,13 +83,11 @@ final class Music: ObservableObject {
             if randomcollections.count < self.viewCount {
                 loopTo = randomcollections.count
             }
-            if loopTo == self.viewCount {
-                loopTo = loopTo - 2
+            let controlArtworkCount = self.dispOperationArtwork == false ? 2 : 3
+            print("viewCount:\(self.viewCount) loopTo:\(loopTo) ontrolArtworkCount:\(controlArtworkCount)")
+            if (self.viewCount - loopTo) <= controlArtworkCount {
+                loopTo = loopTo - (controlArtworkCount - (self.viewCount - loopTo))
             }
-            else if(loopTo == self.viewCount - 1) {
-                loopTo = loopTo - 1
-            }
-
             for index in 0..<loopTo {
                 self.viewCollections.append(randomcollections[index])
             }
