@@ -34,15 +34,37 @@ struct ArtworskView: View {
                         ArtworkView(collection: self.music.viewCollections[index])
                     }
                     if self.music.dispOperationArtwork == true {
-                        Text("play")
-                            .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
-                            .clipShape(Circle())
-                            .onTapGesture(count: 2) {
-                                self.music.playNext()
-                            }
-                            .onTapGesture {
+                        VStack {
+                            Spacer()
+                            Button(action: {
                                 self.music.playPause()
                             }
+                                   , label: {
+                                Image(systemName: "playpause")
+                            })
+                            Spacer()
+                            VStack {
+                                HStack {
+                                    Button(action: {
+                                        self.music.playPrevious()
+                                    }
+                                           , label: {
+                                        Image(systemName: "backward")
+                                    })
+                                    Button(action: {
+                                        self.music.playNext()
+                                    }
+                                           , label: {
+                                        Image(systemName: "forward")
+                                    })
+                                }
+                            }
+                            Spacer()
+                        }
+                        .font(self.music.artworkSizeLarge == true ? .largeTitle : .title)
+                        .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
+                        .background(.green)
+                        .clipShape(Circle())
                     }
                     Image(systemName: "arrow.clockwise.circle")
                         .resizable()
