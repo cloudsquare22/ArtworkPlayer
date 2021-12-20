@@ -18,7 +18,7 @@ struct ArtworskView: View {
                 Spacer()
                 let columnCount = Int(geometry.size.width / self.music.artworkSize)
                 let width = geometry.size.width / CGFloat(columnCount)
-                let columns: [GridItem] = Array(repeating: .init(.fixed(width), spacing: 2.0, alignment: .center), count: columnCount)
+                let columns: [GridItem] = Array(repeating: .init(.fixed(width), spacing: 0.0, alignment: .center), count: columnCount)
 //                let columns: [GridItem] = Array(repeating: .init(.flexible(minimum: width - (width / 2), maximum: width + (width / 2)), spacing: 0.0, alignment: .center), count: columnCount + 1)
 //                LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: columnCount), alignment: .center, spacing: 0.0) {
                 LazyVGrid(columns: columns, alignment: .center, spacing: 2.0) {
