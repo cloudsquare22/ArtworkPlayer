@@ -34,43 +34,39 @@ struct ArtworskView: View {
                         ArtworkView(collection: self.music.viewCollections[index])
                     }
                     if self.music.dispOperationArtwork == true {
-                        Image(systemName: "circle")
-                            .resizable()
-                            .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
-                            .clipShape(Circle())
-                            .overlay {
-                                VStack {
-                                    Spacer()
+                        VStack {
+                            Spacer()
+                            Button(action: {
+                                self.music.playPause()
+                            }
+                                   , label: {
+                                Image(systemName: "playpause")
+                            })
+                            Spacer()
+                            VStack {
+                                HStack {
                                     Button(action: {
-                                        self.music.playPause()
+                                        self.music.playPrevious()
                                     }
                                            , label: {
-                                        Image(systemName: "playpause")
+                                        Image(systemName: "backward")
                                     })
-                                    Spacer()
-                                    VStack {
-                                        HStack {
-                                            Button(action: {
-                                                self.music.playPrevious()
-                                            }
-                                                   , label: {
-                                                Image(systemName: "backward")
-                                            })
-                                            Button(action: {
-                                                self.music.playNext()
-                                            }
-                                                   , label: {
-                                                Image(systemName: "forward")
-                                            })
-                                        }
+                                    Button(action: {
+                                        self.music.playNext()
                                     }
-                                    Spacer()
+                                           , label: {
+                                        Image(systemName: "forward")
+                                    })
                                 }
-
                             }
+                            Spacer()
+                        }
                         .font(self.music.artworkSizeLarge == true ? .largeTitle : .title)
                         .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
-                        .clipShape(Circle())
+                        .overlay(content: {
+                            Circle().stroke(lineWidth: 3.0)
+                        })
+//                        .clipShape(Circle())
                     }
                     Image(systemName: "arrow.clockwise.circle")
                         .resizable()
