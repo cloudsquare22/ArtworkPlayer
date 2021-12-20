@@ -20,8 +20,8 @@ final class Music: ObservableObject {
     @Published var circleShape = false
     @Published var dispOperationArtwork = false
     
-    static let ARTWORKSIZE_SMALL: CGFloat = 120
-    static let ARTWORKSIZE_LARGE: CGFloat = 180
+    static let ARTWORKSIZE_SMALL: CGFloat = 120 - 2
+    static let ARTWORKSIZE_LARGE: CGFloat = 180 - 2
     
     var viewCount:  Int  {
         let columnCount = Int(UIScreen.main.bounds.width / self.artworkSize)
