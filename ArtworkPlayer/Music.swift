@@ -25,7 +25,8 @@ final class Music: ObservableObject {
     
     var viewCount:  Int  {
         let columnCount = Int(UIScreen.main.bounds.width / self.artworkSize)
-        let lineCount = Int(UIScreen.main.bounds.height / self.artworkSize)
+        let lineCount = Int((UIScreen.main.bounds.height - 20) / self.artworkSize)
+        print("columnCount:\(columnCount),lineCount:\(lineCount), viewCount:\(columnCount * lineCount)")
         return columnCount * lineCount
     }
     let userdefault = UserDefaults.standard
