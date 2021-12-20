@@ -41,8 +41,9 @@ struct ArtworskView: View {
                             }
                                    , label: {
                                 Image(systemName: "playpause")
+                                    .padding(2.0)
                             })
-                            Spacer()
+                            Image(systemName: "dpad.fill")
                             VStack {
                                 HStack {
                                     Button(action: {
@@ -59,12 +60,14 @@ struct ArtworskView: View {
                                     })
                                 }
                             }
+                            .padding(2.0)
                             Spacer()
                         }
                         .font(self.music.artworkSizeLarge == true ? .largeTitle : .title)
+                        .foregroundColor(.primary)
                         .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
                         .overlay(content: {
-                            Circle().stroke(lineWidth: 3.0)
+                            Circle().stroke(lineWidth: 2.0)
                         })
 //                        .clipShape(Circle())
                     }
