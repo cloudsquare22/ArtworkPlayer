@@ -14,10 +14,10 @@ final class Music: ObservableObject {
     @Published var viewCollections: [MPMediaItemCollection] = []
     @Published var iCloud = false
     @Published var shufflePlay = false
-    @Published var minTracks: Int = 6
+    @Published var minTracks: Int = 1
     @Published var artworkSizeLarge = false
     @Published var backgroundColor: Int = 0
-    @Published var circleShape = true
+    @Published var circleShape = false
     @Published var dispOperationArtwork = false
     
     static let ARTWORKSIZE_SMALL: CGFloat = 120
@@ -54,6 +54,9 @@ final class Music: ObservableObject {
         if let backgroundColor = userdefault.object(forKey: "backgroundColor") as? Int {
             self.backgroundColor = backgroundColor
         }
+        if let circleShape = userdefault.object(forKey: "circleShape") as? Bool {
+            self.circleShape = circleShape
+        }
         if let dispOperationArtwork = userdefault.object(forKey: "dispOperationArtwork") as? Bool {
             self.dispOperationArtwork = dispOperationArtwork
         }
@@ -65,6 +68,7 @@ final class Music: ObservableObject {
         self.userdefault.set(self.minTracks, forKey: "minTracks")
         self.userdefault.set(self.artworkSizeLarge, forKey: "artworkSizeLarge")
         self.userdefault.set(self.backgroundColor, forKey: "backgroundColor")
+        self.userdefault.set(self.circleShape, forKey: "circleShape")
         self.userdefault.set(self.dispOperationArtwork, forKey: "dispOperationArtwork")
     }
 

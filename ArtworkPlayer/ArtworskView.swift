@@ -21,7 +21,7 @@ struct ArtworskView: View {
                 LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: columnCount), alignment: .center, spacing: 0.0) {
                     Image(systemName: "gear")
                         .resizable()
-                        .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
+                        .frame(width: self.music.artworkSize, height: self.music.artworkSize, alignment: .center)
                         .clipShape(Circle())
                         .onTapGesture {
                             self.isShowingSettingView.toggle()
@@ -41,7 +41,6 @@ struct ArtworskView: View {
                             }
                                    , label: {
                                 Image(systemName: "playpause")
-                                    .padding(2.0)
                             })
                             Image(systemName: "dpad.fill")
                             VStack {
@@ -60,7 +59,6 @@ struct ArtworskView: View {
                                     })
                                 }
                             }
-                            .padding(2.0)
                             Spacer()
                         }
                         .font(self.music.artworkSizeLarge == true ? .largeTitle : .title)
