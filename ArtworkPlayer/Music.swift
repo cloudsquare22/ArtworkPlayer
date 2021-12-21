@@ -165,22 +165,26 @@ final class Music: ObservableObject {
         }
     }
     
-    static let SETTINGCOLOR: [(Color, Color)] = [(.white, .black),
-                                                 (.blue, .blue),
-                                                 (.brown, .brown),
-                                                 (.cyan, .cyan),
-                                                 (.gray, .gray),
-                                                 (.green, .green),
-                                                 (.indigo, .indigo),
-                                                 (.mint, .mint),
-                                                 (.orange, .orange),
-                                                 (.pink, .pink),
-                                                 (.purple, .purple),
-                                                 (.red, .red),
-                                                 (.teal, .teal),
-                                                 (.yellow, .yellow)]
+    static let SETTINGCOLOR: [(Color, Color, String)] = [(.white, .black, "Default"),
+                                                         (.blue, .blue, "Blue"),
+                                                         (.brown, .brown, "Brown"),
+                                                         (.cyan, .cyan, "Cyan"),
+                                                         (.gray, .gray, "Gray"),
+                                                         (.green, .green, "Green"),
+                                                         (.indigo, .indigo, "Indigo"),
+                                                         (.mint, .mint, "Mint"),
+                                                         (.orange, .orange, "Orange"),
+                                                         (.pink, .pink, "Pink"),
+                                                         (.purple, .purple, "Purple"),
+                                                         (.red, .red , "Red"),
+                                                         (.teal, .teal, "Teal"),
+                                                         (.yellow, .yellow, "Yellos")]
     
     func toColor(selct: Int) -> Color {
         UITraitCollection.current.userInterfaceStyle == .light ? Music.SETTINGCOLOR[selct].0 : Music.SETTINGCOLOR[selct].1
+    }
+    
+    func toColorTitle(selct: Int) -> String {
+        Music.SETTINGCOLOR[selct].2
     }
 }

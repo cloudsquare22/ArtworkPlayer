@@ -37,15 +37,13 @@ struct ArtworskView: View {
                         ArtworkView(collection: self.music.viewCollections[index])
                     }
                     if self.music.dispOperationArtwork == true {
-                        VStack {
-                            Spacer()
+                        VStack(spacing: 8.0) {
                             Button(action: {
                                 self.music.playPause()
                             }
                                    , label: {
                                 Image(systemName: "playpause")
                             })
-                            Image(systemName: "dpad.fill")
                             VStack {
                                 HStack {
                                     Button(action: {
@@ -62,7 +60,6 @@ struct ArtworskView: View {
                                     })
                                 }
                             }
-                            Spacer()
                         }
                         .font(self.music.artworkSizeLarge == true ? .largeTitle : .title)
                         .foregroundColor(.primary)

@@ -85,12 +85,13 @@ struct DispSettingView: View {
                     self.music.albums()
                 }
             Picker(selection: self.$music.backgroundColor, content: {
-                Text("Default")
-                    .tag(0)
-                ForEach(1..<Music.SETTINGCOLOR.count, id: \.self) { index in
-                    Image(systemName: "paintpalette.fill")
-                        .foregroundColor(Music.SETTINGCOLOR[index].0)
-                        .tag(index)
+                ForEach(0..<Music.SETTINGCOLOR.count, id: \.self) { index in
+                    HStack {
+                        Image(systemName: "paintpalette.fill")
+                            .foregroundColor(self.music.toColor(selct: index))
+                        Text(NSLocalizedString(self.music.toColorTitle(selct: index), comment: ""))
+                    }
+                    .tag(index)
                 }
             }, label: {
                 Text("Background Color")
