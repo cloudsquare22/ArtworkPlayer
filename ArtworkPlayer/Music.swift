@@ -178,7 +178,7 @@ final class Music: ObservableObject {
                                                          (.purple, .purple, "Purple"),
                                                          (.red, .red , "Red"),
                                                          (.teal, .teal, "Teal"),
-                                                         (.yellow, .yellow, "Yellos")]
+                                                         (.yellow, .yellow, "Yellow")]
     
     func toColor(selct: Int) -> Color {
         UITraitCollection.current.userInterfaceStyle == .light ? Music.SETTINGCOLOR[selct].0 : Music.SETTINGCOLOR[selct].1
