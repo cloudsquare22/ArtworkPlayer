@@ -23,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		8D95BC7E27734EE800CA83E7 /* ManualView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualView.swift; sourceTree = "<group>"; };
+		8D95BC802773534C00CA83E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D997BAF275F7798000E4607 /* ArtworkPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtworkPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D997BB2275F7798000E4607 /* ArtworkPlayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkPlayerApp.swift; sourceTree = "<group>"; };
 		8D997BB4275F7798000E4607 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		8D997BB1275F7798000E4607 /* ArtworkPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				8D95BC802773534C00CA83E7 /* Info.plist */,
 				8D997BB2275F7798000E4607 /* ArtworkPlayerApp.swift */,
 				8D997BB4275F7798000E4607 /* ContentView.swift */,
 				8D997BB6275F779B000E4607 /* Assets.xcassets */,
@@ -330,6 +332,7 @@
 				DEVELOPMENT_TEAM = 385NJ9XLA7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ArtworkPlayer/Info.plist;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Access to music selection, information display, and playback.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -360,6 +363,7 @@
 				DEVELOPMENT_TEAM = 385NJ9XLA7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ArtworkPlayer/Info.plist;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Access to music selection, information display, and playback.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
