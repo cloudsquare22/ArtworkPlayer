@@ -25,6 +25,11 @@ struct ArtworskView: View {
                     Image(systemName: "gear")
                         .resizable()
                         .frame(width: self.music.artworkSize, height: self.music.artworkSize, alignment: .center)
+                        .overlay(content: {
+                            Text("\(columnCount)")
+                                .foregroundColor(.red)
+                                .font(.largeTitle)
+                        })
                         .clipShape(Circle())
                         .onTapGesture {
                             self.isShowingSettingView.toggle()
@@ -81,10 +86,11 @@ struct ArtworskView: View {
             }
         }
         .background(self.music.toColor(selct: self.music.backgroundColor))
-//        .onAppear() {
+        .onAppear() {
+            print("onApper()")
 //            self.music.onManual = true
 //            self.isShowingSettingView = true
-//        }
+        }
     }
 }
 

@@ -105,6 +105,42 @@ final class Music: ObservableObject {
         print(self.viewCollections.count)
     }
     
+    func albums(width: CGFloat, height: CGFloat) -> Int {
+        print("width:\(width),height\(height)")
+                
+        let columnCount = Int(width / self.artworkSize)
+        let lineCount = Int((height - 20) / self.artworkSize)
+        let viewCount = columnCount * lineCount
+
+        let iCloudFilter = MPMediaPropertyPredicate(value: self.iCloud,
+                                                    forProperty: MPMediaItemPropertyIsCloudItem,
+                                                    comparisonType: .equalTo)
+
+        self.viewCollections = []
+        let mPMediaQuery = MPMediaQuery.albums()
+        mPMediaQuery.addFilterPredicate(iCloudFilter)
+        if let collections = mPMediaQuery.collections {
+            print(collections.count)
+            let randomcollections = collections.randomSample(count: collections.count).filter({collection in collection.items.count >= self.minTracks})
+            print(randomcollections.count)
+
+            var loopTo = viewCount
+            if randomcollections.count < viewCount {
+                loopTo = randomcollections.count
+            }
+            let controlArtworkCount = self.dispOperationArtwork == false ? 2 : 3
+            print("viewCount:\(viewCount) loopTo:\(loopTo) ontrolArtworkCount:\(controlArtworkCount)")
+            if (viewCount - loopTo) <= controlArtworkCount {
+                loopTo = loopTo - (controlArtworkCount - (viewCount - loopTo))
+            }
+            for index in 0..<loopTo {
+                self.viewCollections.append(randomcollections[index])
+            }
+        }
+        print(self.viewCollections.count)
+        return self.viewCollections.count
+    }
+
     func artwork(item: MPMediaItem) -> Image {
         var result: Image = Image(systemName: "opticaldisc")
         if let value = item.artwork {
