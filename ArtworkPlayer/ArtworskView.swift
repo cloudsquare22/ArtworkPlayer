@@ -84,6 +84,11 @@ struct ArtworskView: View {
                 }
                 Spacer()
             }
+            .onChange(of: geometry.size.width, perform: {newValue in
+                print("geometry onChange:\(geometry.size.width):\(geometry.size.height)")
+                print("UIScreen:\(UIScreen.main.bounds.width):\(UIScreen.main.bounds.height)")
+                self.music.albums(width: geometry.size.width, height: geometry.size.height)
+            })
         }
         .background(self.music.toColor(selct: self.music.backgroundColor))
         .onAppear() {

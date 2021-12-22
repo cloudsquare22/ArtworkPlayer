@@ -105,7 +105,7 @@ final class Music: ObservableObject {
         print(self.viewCollections.count)
     }
     
-    func albums(width: CGFloat, height: CGFloat) -> Int {
+    func albums(width: CGFloat, height: CGFloat) {
         print("width:\(width),height\(height)")
                 
         let columnCount = Int(width / self.artworkSize)
@@ -138,7 +138,6 @@ final class Music: ObservableObject {
             }
         }
         print(self.viewCollections.count)
-        return self.viewCollections.count
     }
 
     func artwork(item: MPMediaItem) -> Image {
