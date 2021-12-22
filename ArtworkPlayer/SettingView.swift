@@ -13,6 +13,7 @@ struct SettingView: View {
     var body: some View {
         NavigationView {
             Form {
+                ManualSectionView()
                 CommonSettingView()
                 FilterSettingView()
                 DispSettingView()
@@ -27,6 +28,20 @@ struct SettingView: View {
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
         SettingView()
+    }
+}
+
+struct ManualSectionView: View {
+    @EnvironmentObject var music: Music
+
+    var body: some View {
+        Section(header: Label("Manual", systemImage: "text.book.closed")) {
+            NavigationLink(isActive: self.$music.onManual, destination: {
+                ManualView()
+            }, label: {
+                Text("Manual")
+            })
+        }
     }
 }
 

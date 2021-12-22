@@ -19,6 +19,7 @@ final class Music: ObservableObject {
     @Published var backgroundColor: Int = 0
     @Published var circleShape = true
     @Published var dispOperationArtwork = false
+    @Published var onManual = false
     
     static let ARTWORKSIZE_SMALL: CGFloat = 120 - 2
     static let ARTWORKSIZE_LARGE: CGFloat = 180 - 2

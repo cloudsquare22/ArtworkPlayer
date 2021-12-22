@@ -81,6 +81,10 @@ struct ArtworskView: View {
             }
         }
         .background(self.music.toColor(selct: self.music.backgroundColor))
+//        .onAppear() {
+//            self.music.onManual = true
+//            self.isShowingSettingView = true
+//        }
     }
 }
 
