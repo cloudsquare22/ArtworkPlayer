@@ -79,7 +79,7 @@ struct ArtworskView: View {
                         .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
                         .clipShape(Circle())
                         .onTapGesture {
-                            self.music.albums()                            
+                            self.music.albums(width: geometry.size.width, height: geometry.size.height)
                         }
                 }
                 Spacer()
@@ -89,7 +89,12 @@ struct ArtworskView: View {
                 print("UIScreen:\(UIScreen.main.bounds.width):\(UIScreen.main.bounds.height)")
                 self.music.albums(width: geometry.size.width, height: geometry.size.height)
             })
+            .onReceive(NotificationCenter.default.publisher(for: .changeArtwork, object: nil), perform: { notification in
+                print("Notification.changeArtwork")
+                self.music.albums(width: geometry.size.width, height: geometry.size.height)
+            })
         }
+        .edgesIgnoringSafeArea(.all)
         .background(self.music.toColor(selct: self.music.backgroundColor))
         .onAppear() {
             print("onApper()")

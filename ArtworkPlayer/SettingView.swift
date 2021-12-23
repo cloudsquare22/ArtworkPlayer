@@ -55,7 +55,7 @@ struct CommonSettingView: View {
             })
                 .onChange(of: self.music.dispOperationArtwork) {newValue in
                     self.music.save()
-                    self.music.albums()
+                    NotificationCenter.default.post(name: .changeArtwork, object: nil)
                 }
         }
     }
@@ -80,7 +80,7 @@ struct FilterSettingView: View {
             NumberPlusMinusInputView(title: NSLocalizedString("Disp min tracks", comment: ""), bounds: 1...100, number: self.$music.minTracks)
                 .onChange(of: self.music.minTracks) {newValue in
                     self.music.save()
-                    self.music.albums()
+                    NotificationCenter.default.post(name: .changeArtwork, object: nil)
                 }
         }
     }
@@ -97,7 +97,7 @@ struct DispSettingView: View {
             })
                 .onChange(of: self.music.artworkSizeLarge) {newValue in
                     self.music.save()
-                    self.music.albums()
+                    NotificationCenter.default.post(name: .changeArtwork, object: nil)
                 }
             Picker(selection: self.$music.backgroundColor, content: {
                 ForEach(0..<Music.SETTINGCOLOR.count, id: \.self) { index in
@@ -119,7 +119,7 @@ struct DispSettingView: View {
             })
                 .onChange(of: self.music.circleShape) {newValue in
                     self.music.save()
-                    self.music.albums()
+                    NotificationCenter.default.post(name: .changeArtwork, object: nil)
                 }
         }
     }
