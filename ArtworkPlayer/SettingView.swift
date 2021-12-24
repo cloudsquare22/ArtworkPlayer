@@ -36,10 +36,12 @@ struct ManualSectionView: View {
 
     var body: some View {
         Section(header: Label("Manual", systemImage: "text.book.closed")) {
-            NavigationLink(isActive: self.$music.onManual, destination: {
+            NavigationLink(destination: {
                 ManualView()
-            }, label: {
+            },
+                           label: {
                 Text("Manual")
+
             })
         }
     }
