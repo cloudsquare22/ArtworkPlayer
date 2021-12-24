@@ -93,14 +93,13 @@ struct ArtworskView: View {
                 print("Notification.changeArtwork")
                 self.music.albums(width: geometry.size.width, height: geometry.size.height)
             })
+            .onAppear() {
+                print("onApper()")
+                self.music.albums(width: geometry.size.width, height: geometry.size.height)
+            }
         }
         .edgesIgnoringSafeArea(.all)
         .background(self.music.toColor(selct: self.music.backgroundColor))
-        .onAppear() {
-            print("onApper()")
-//            self.music.onManual = true
-//            self.isShowingSettingView = true
-        }
     }
 }
 

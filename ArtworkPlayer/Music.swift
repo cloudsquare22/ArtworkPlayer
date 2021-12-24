@@ -37,7 +37,6 @@ final class Music: ObservableObject {
 
     init() {
         self.load()
-        self.albums()
     }
     
     func load() {
