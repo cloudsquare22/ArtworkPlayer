@@ -11,6 +11,8 @@ import MediaPlayer
 struct ArtworskView: View {
     @EnvironmentObject var music: Music
     @State var isShowingSettingView = false
+    @Environment(\.scenePhase) private var scenePhase
+    @State var phase: ScenePhase = .active
 
     var body: some View {
         GeometryReader { geometry in
@@ -79,24 +81,40 @@ struct ArtworskView: View {
                         .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
                         .clipShape(Circle())
                         .onTapGesture {
-                            self.music.albums(width: geometry.size.width, height: geometry.size.height)
+                            self.music.albums(width: geometry.size.width, height: geometry.size.height, forced: true)
                         }
                 }
                 Spacer()
             }
             .onChange(of: geometry.size.width, perform: {newValue in
-                print("geometry onChange:\(geometry.size.width):\(geometry.size.height)")
-                print("UIScreen:\(UIScreen.main.bounds.width):\(UIScreen.main.bounds.height)")
-                self.music.albums(width: geometry.size.width, height: geometry.size.height)
+                if self.phase != .background {
+                    print("geometry onChange:\(geometry.size.width):\(geometry.size.height)")
+                    print("UIScreen:\(UIScreen.main.bounds.width):\(UIScreen.main.bounds.height)")
+                    self.music.albums(width: geometry.size.width, height: geometry.size.height)
+                }
             })
             .onReceive(NotificationCenter.default.publisher(for: .changeArtwork, object: nil), perform: { notification in
                 print("Notification.changeArtwork")
-                self.music.albums(width: geometry.size.width, height: geometry.size.height)
+                self.music.albums(width: geometry.size.width, height: geometry.size.height, forced: true)
             })
             .onAppear() {
                 print("onApper()")
                 self.music.albums(width: geometry.size.width, height: geometry.size.height)
             }
+            .onChange(of: scenePhase, perform: { value in
+                self.phase = value
+                switch(value) {
+                case .active:
+                    print("active")
+                case .background:
+                    print("background")
+                case .inactive:
+                    print("inactive")
+                @unknown default:
+                    print("default")
+                }
+            })
+            
         }
         .edgesIgnoringSafeArea(.all)
         .background(self.music.toColor(selct: self.music.backgroundColor))

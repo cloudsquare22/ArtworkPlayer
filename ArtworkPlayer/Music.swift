@@ -19,6 +19,7 @@ final class Music: ObservableObject {
     @Published var backgroundColor: Int = 0
     @Published var circleShape = true
     @Published var dispOperationArtwork = false
+    @Published var firstManual = true
     var nowWidth: CGFloat = 0.0
     var nowHeight: CGFloat = 0.0
     
@@ -105,16 +106,18 @@ final class Music: ObservableObject {
         print(self.viewCollections.count)
     }
     
-    func albums(width: CGFloat, height: CGFloat) {
+    func albums(width: CGFloat, height: CGFloat, forced: Bool = false) {
+        print(#function)
         print("Now width:\(self.nowWidth),Now height\(self.nowHeight)")
         print("width:\(width),height\(height)")
         
-//        guard self.nowWidth != width else {
-//            return
-//        }
-//        guard self.nowHeight != height else {
-//            return
-//        }
+        if ((self.nowWidth == width && self.nowHeight == height) ||
+            (self.nowWidth == height && self.nowHeight == width)) &&
+            (forced == false) {
+            print("no change")
+            return
+        }
+
         self.nowWidth = width
         self.nowHeight = height
 
