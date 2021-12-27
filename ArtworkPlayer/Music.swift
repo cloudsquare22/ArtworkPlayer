@@ -19,6 +19,8 @@ final class Music: ObservableObject {
     @Published var backgroundColor: Int = 0
     @Published var circleShape = true
     @Published var dispOperationArtwork = false
+    var nowWidth: CGFloat = 0.0
+    var nowHeight: CGFloat = 0.0
     
     static let ARTWORKSIZE_SMALL: CGFloat = 120 - 2
     static let ARTWORKSIZE_LARGE: CGFloat = 180 - 2
@@ -104,8 +106,18 @@ final class Music: ObservableObject {
     }
     
     func albums(width: CGFloat, height: CGFloat) {
+        print("Now width:\(self.nowWidth),Now height\(self.nowHeight)")
         print("width:\(width),height\(height)")
-                
+        
+//        guard self.nowWidth != width else {
+//            return
+//        }
+//        guard self.nowHeight != height else {
+//            return
+//        }
+        self.nowWidth = width
+        self.nowHeight = height
+
         let columnCount = Int(width / self.artworkSize)
         let lineCount = Int((height - 20) / self.artworkSize)
         let viewCount = columnCount * lineCount
