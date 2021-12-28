@@ -63,6 +63,9 @@ final class Music: ObservableObject {
         if let dispOperationArtwork = userdefault.object(forKey: "dispOperationArtwork") as? Bool {
             self.dispOperationArtwork = dispOperationArtwork
         }
+        if let firstManual = userdefault.object(forKey: "firstManual") as? Bool {
+            self.firstManual = firstManual
+        }
     }
     
     func save() {
@@ -73,6 +76,7 @@ final class Music: ObservableObject {
         self.userdefault.set(self.backgroundColor, forKey: "backgroundColor")
         self.userdefault.set(self.circleShape, forKey: "circleShape")
         self.userdefault.set(self.dispOperationArtwork, forKey: "dispOperationArtwork")
+        self.userdefault.set(self.firstManual, forKey: "firstManual")
     }
 
     func albums() {

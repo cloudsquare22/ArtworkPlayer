@@ -15,109 +15,114 @@ struct ArtworskView: View {
     @State var phase: ScenePhase = .active
 
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                Spacer()
-                let columnCount = Int(geometry.size.width / self.music.artworkSize)
-                let width = geometry.size.width / CGFloat(columnCount)
-                let columns: [GridItem] = Array(repeating: .init(.fixed(width), spacing: 0.0, alignment: .center), count: columnCount)
-//                let columns: [GridItem] = Array(repeating: .init(.flexible(minimum: width - (width / 2), maximum: width + (width / 2)), spacing: 0.0, alignment: .center), count: columnCount + 1)
-//                LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: columnCount), alignment: .center, spacing: 0.0) {
-                LazyVGrid(columns: columns, alignment: .center, spacing: 2.0) {
-                    Image(systemName: "gear")
-                        .resizable()
-                        .frame(width: self.music.artworkSize, height: self.music.artworkSize, alignment: .center)
-//                        .overlay(content: {
-//                            Text("\(columnCount)")
-//                                .foregroundColor(.red)
-//                                .font(.largeTitle)
-//                        })
-                        .clipShape(Circle())
-                        .onTapGesture {
-                            self.isShowingSettingView.toggle()
-                            
-                        }
-                        .sheet(isPresented: self.$isShowingSettingView, onDismiss: {}, content: {
-                            SettingView()
-                        })
-                    ForEach(0..<self.music.viewCollections.count, id: \.self) { index in
-                        ArtworkView(collection: self.music.viewCollections[index])
-                    }
-                    if self.music.dispOperationArtwork == true {
-                        VStack(spacing: 8.0) {
-                            Button(action: {
-                                self.music.playPause()
+        if self.music.firstManual == true {
+            FirstView()
+        }
+        else {
+            GeometryReader { geometry in
+                VStack {
+                    Spacer()
+                    let columnCount = Int(geometry.size.width / self.music.artworkSize)
+                    let width = geometry.size.width / CGFloat(columnCount)
+                    let columns: [GridItem] = Array(repeating: .init(.fixed(width), spacing: 0.0, alignment: .center), count: columnCount)
+    //                let columns: [GridItem] = Array(repeating: .init(.flexible(minimum: width - (width / 2), maximum: width + (width / 2)), spacing: 0.0, alignment: .center), count: columnCount + 1)
+    //                LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: width, maximum: width)), count: columnCount), alignment: .center, spacing: 0.0) {
+                    LazyVGrid(columns: columns, alignment: .center, spacing: 2.0) {
+                        Image(systemName: "gear")
+                            .resizable()
+                            .frame(width: self.music.artworkSize, height: self.music.artworkSize, alignment: .center)
+    //                        .overlay(content: {
+    //                            Text("\(columnCount)")
+    //                                .foregroundColor(.red)
+    //                                .font(.largeTitle)
+    //                        })
+                            .clipShape(Circle())
+                            .onTapGesture {
+                                self.isShowingSettingView.toggle()
+                                
                             }
-                                   , label: {
-                                Image(systemName: "playpause")
+                            .sheet(isPresented: self.$isShowingSettingView, onDismiss: {}, content: {
+                                SettingView()
                             })
-                            VStack {
-                                HStack {
-                                    Button(action: {
-                                        self.music.playPrevious()
+                        ForEach(0..<self.music.viewCollections.count, id: \.self) { index in
+                            ArtworkView(collection: self.music.viewCollections[index])
+                        }
+                        if self.music.dispOperationArtwork == true {
+                            VStack(spacing: 8.0) {
+                                Button(action: {
+                                    self.music.playPause()
+                                }
+                                       , label: {
+                                    Image(systemName: "playpause")
+                                })
+                                VStack {
+                                    HStack {
+                                        Button(action: {
+                                            self.music.playPrevious()
+                                        }
+                                               , label: {
+                                            Image(systemName: "backward")
+                                        })
+                                        Button(action: {
+                                            self.music.playNext()
+                                        }
+                                               , label: {
+                                            Image(systemName: "forward")
+                                        })
                                     }
-                                           , label: {
-                                        Image(systemName: "backward")
-                                    })
-                                    Button(action: {
-                                        self.music.playNext()
-                                    }
-                                           , label: {
-                                        Image(systemName: "forward")
-                                    })
                                 }
                             }
+                            .font(self.music.artworkSizeLarge == true ? .largeTitle : .title)
+                            .foregroundColor(.primary)
+                            .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
+                            .overlay(content: {
+                                Circle().stroke(lineWidth: 2.0)
+                            })
+    //                        .clipShape(Circle())
                         }
-                        .font(self.music.artworkSizeLarge == true ? .largeTitle : .title)
-                        .foregroundColor(.primary)
-                        .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
-                        .overlay(content: {
-                            Circle().stroke(lineWidth: 2.0)
-                        })
-//                        .clipShape(Circle())
+                        Image(systemName: "arrow.clockwise.circle")
+                            .resizable()
+                            .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
+                            .clipShape(Circle())
+                            .onTapGesture {
+                                self.music.albums(width: geometry.size.width, height: geometry.size.height, forced: true)
+                            }
                     }
-                    Image(systemName: "arrow.clockwise.circle")
-                        .resizable()
-                        .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
-                        .clipShape(Circle())
-                        .onTapGesture {
-                            self.music.albums(width: geometry.size.width, height: geometry.size.height, forced: true)
-                        }
+                    Spacer()
                 }
-                Spacer()
-            }
-            .onChange(of: geometry.size.width, perform: {newValue in
-                if self.phase != .background {
-                    print("geometry onChange:\(geometry.size.width):\(geometry.size.height)")
-                    print("UIScreen:\(UIScreen.main.bounds.width):\(UIScreen.main.bounds.height)")
+                .onChange(of: geometry.size.width, perform: {newValue in
+                    if self.phase != .background {
+                        print("geometry onChange:\(geometry.size.width):\(geometry.size.height)")
+                        print("UIScreen:\(UIScreen.main.bounds.width):\(UIScreen.main.bounds.height)")
+                        self.music.albums(width: geometry.size.width, height: geometry.size.height)
+                    }
+                })
+                .onReceive(NotificationCenter.default.publisher(for: .changeArtwork, object: nil), perform: { notification in
+                    print("Notification.changeArtwork")
+                    self.music.albums(width: geometry.size.width, height: geometry.size.height, forced: true)
+                })
+                .onAppear() {
+                    print("onApper()")
                     self.music.albums(width: geometry.size.width, height: geometry.size.height)
                 }
-            })
-            .onReceive(NotificationCenter.default.publisher(for: .changeArtwork, object: nil), perform: { notification in
-                print("Notification.changeArtwork")
-                self.music.albums(width: geometry.size.width, height: geometry.size.height, forced: true)
-            })
-            .onAppear() {
-                print("onApper()")
-                self.music.albums(width: geometry.size.width, height: geometry.size.height)
+                .onChange(of: scenePhase, perform: { value in
+                    self.phase = value
+                    switch(value) {
+                    case .active:
+                        print("active")
+                    case .background:
+                        print("background")
+                    case .inactive:
+                        print("inactive")
+                    @unknown default:
+                        print("default")
+                    }
+                })
+                
             }
-            .onChange(of: scenePhase, perform: { value in
-                self.phase = value
-                switch(value) {
-                case .active:
-                    print("active")
-                case .background:
-                    print("background")
-                case .inactive:
-                    print("inactive")
-                @unknown default:
-                    print("default")
-                }
-            })
-            
+            .edgesIgnoringSafeArea(.all)
+            .background(self.music.toColor(selct: self.music.backgroundColor))
         }
-        .edgesIgnoringSafeArea(.all)
-        .background(self.music.toColor(selct: self.music.backgroundColor))
     }
 }
 

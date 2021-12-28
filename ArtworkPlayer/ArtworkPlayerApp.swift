@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct ArtworkPlayerApp: App {
+    var music: Music = Music()
+
     var body: some Scene {
         WindowGroup {
             ArtworskView()
-                .environmentObject(Music())
+                .environmentObject(self.music)
         }
     }
 }
