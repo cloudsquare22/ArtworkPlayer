@@ -11,12 +11,17 @@ struct FirstView: View {
     @EnvironmentObject var music: Music
     var body: some View {
         VStack {
-            Text("FirstView")
+            Label("Manual", systemImage: "text.book.closed")
+                .font(.largeTitle)
+            Image("firstview")
+                .resizable()
+                .scaledToFit()
             Button {
                 self.music.firstManual = false
                 self.music.save()
             } label: {
-                Text("End")
+                Text("Start")
+                    .font(.largeTitle)
             }
 
         }
