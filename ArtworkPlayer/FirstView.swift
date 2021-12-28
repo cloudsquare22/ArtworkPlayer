@@ -23,8 +23,8 @@ struct FirstView: View {
                 Text("Start")
                     .font(.largeTitle)
             }
-
         }
+        .padding(32.0)
     }
 }
 

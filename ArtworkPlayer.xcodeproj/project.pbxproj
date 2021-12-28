@@ -28,6 +28,7 @@
 		8D95BC802773534C00CA83E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D95BC812774981500CA83E7 /* ExtentionNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionNotification.swift; sourceTree = "<group>"; };
 		8D95BCA8277B1CE100CA83E7 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
+		8D95BCAA277BCB1E00CA83E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D997BAF275F7798000E4607 /* ArtworkPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtworkPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D997BB2275F7798000E4607 /* ArtworkPlayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkPlayerApp.swift; sourceTree = "<group>"; };
 		8D997BB4275F7798000E4607 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -204,6 +205,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8DDDC235276A12A60050A235 /* ja */,
+				8D95BCAA277BCB1E00CA83E7 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
