@@ -44,6 +44,7 @@ struct FirstViewMessage: View {
                 Text("The app uses the music library.")
                 Text("If you don't see the artwork, check to see if it is visible in the Music app.")
             }
+            .foregroundColor(.red)
             HStack {
                 Spacer()
                 Button(action: {

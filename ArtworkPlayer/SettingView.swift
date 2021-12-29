@@ -13,6 +13,7 @@ struct SettingView: View {
     var body: some View {
         NavigationView {
             Form {
+                FirstViewMessage()
                 ManualSectionView()
                 CommonSettingView()
                 FilterSettingView()
