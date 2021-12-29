@@ -28,3 +28,5 @@
 "Artwork" = "アートワーク";
 "Control artwork" = "アートワーク制御";
 "Start" = "はじめる";
+"The app uses the music library." = "アプリはミュージックライブラリを使用します。";
+"If you don't see the artwork, check to see if it is visible in the Music app." = "アートワークが表示されない場合、ミュージックアプリで表示されているか確認してください。";

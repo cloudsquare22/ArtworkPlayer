@@ -13,6 +13,8 @@ struct FirstView: View {
         VStack {
             Label("Manual", systemImage: "text.book.closed")
                 .font(.largeTitle)
+            FirstViewMessage()
+                .padding(8.0)
             Image("firstview")
                 .resizable()
                 .scaledToFit()
@@ -31,5 +33,27 @@ struct FirstView: View {
 struct FirstView_Previews: PreviewProvider {
     static var previews: some View {
         FirstView()
+    }
+}
+
+struct FirstViewMessage: View {
+
+    var body: some View {
+        VStack {
+            VStack(alignment: .leading) {
+                Text("The app uses the music library.")
+                Text("If you don't see the artwork, check to see if it is visible in the Music app.")
+            }
+            HStack {
+                Spacer()
+                Button(action: {
+                    UIApplication.shared.open(URL(string: "music:")!, options: [:])
+                }, label: {
+                    Text("Launch the music app.")
+                })
+                    .buttonStyle(.borderedProminent)
+                Spacer()
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct ManualView: View {
     var body: some View {
         List {
+            FirstViewMessage()
             Section(header: Label("Artwork", systemImage: "circle.grid.3x3.fill")) {
                 HStack {
                     Label("Tap", systemImage: "hand.tap")
