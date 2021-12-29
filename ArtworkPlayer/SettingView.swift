@@ -72,6 +72,7 @@ struct FilterSettingView: View {
             })
                 .onChange(of: self.music.iCloud) {newValue in
                     self.music.save()
+                    NotificationCenter.default.post(name: .changeArtwork, object: nil)
                 }
             Toggle(isOn: self.$music.shufflePlay, label: {
                 Text("Shuffle Play")
@@ -121,7 +122,6 @@ struct DispSettingView: View {
             })
                 .onChange(of: self.music.circleShape) {newValue in
                     self.music.save()
-                    NotificationCenter.default.post(name: .changeArtwork, object: nil)
                 }
         }
     }
