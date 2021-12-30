@@ -41,10 +41,12 @@ struct ManualView: View {
                     Text("Play control")
                 }
             }
-            Section(header: Label("Firstview", systemImage: "text.book.closed")) {
+            Section(header: Label("Diagram", systemImage: "text.book.closed")) {
                 HStack {
                     Spacer()
                     Image("firstview")
+                        .resizable()
+                        .scaledToFit()
                     Spacer()
                 }
             }

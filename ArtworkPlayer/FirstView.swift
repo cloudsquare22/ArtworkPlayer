@@ -50,7 +50,7 @@ struct FirstViewMessage: View {
                 Button(action: {
                     UIApplication.shared.open(URL(string: "music:")!, options: [:])
                 }, label: {
-                    Text("Launch the music app.")
+                    Text("Launch the music app")
                 })
                     .buttonStyle(.borderedProminent)
                 Spacer()
