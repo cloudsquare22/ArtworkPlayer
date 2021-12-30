@@ -73,7 +73,7 @@ struct ArtworskView: View {
                                 }
                             }
                             .font(self.music.artworkSizeLarge == true ? .largeTitle : .title)
-                            .foregroundColor(.primary)
+                            .foregroundColor(.white)
                             .background(content: {
                                 if let nowPlayingItem = self.music.nowPlayingItem {
                                     self.music.artwork(item: nowPlayingItem)
