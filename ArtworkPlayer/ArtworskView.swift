@@ -74,6 +74,21 @@ struct ArtworskView: View {
                             }
                             .font(self.music.artworkSizeLarge == true ? .largeTitle : .title)
                             .foregroundColor(.primary)
+                            .background(content: {
+                                if let nowPlayingItem = self.music.nowPlayingItem {
+                                    self.music.artwork(item: nowPlayingItem)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
+                                        .overlay(content: {
+                                            Circle().fill(.black).opacity(0.4)
+                                        })
+                                        .clipShape(Circle())
+                                }
+                                else {
+                                    EmptyView()
+                                }
+                            })
                             .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
                             .overlay(content: {
                                 Circle().stroke(lineWidth: 2.0)
@@ -118,7 +133,9 @@ struct ArtworskView: View {
                         print("default")
                     }
                 })
-                
+//                .onReceive(NotificationCenter.default.publisher(for: .MPMusicPlayerControllerNowPlayingItemDidChange, object: nil), perform: { notification in
+//                    print("music change")
+//                })
             }
             .edgesIgnoringSafeArea(.all)
             .background(self.music.toColor(selct: self.music.backgroundColor))

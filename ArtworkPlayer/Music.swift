@@ -20,6 +20,7 @@ final class Music: ObservableObject {
     @Published var circleShape = true
     @Published var dispOperationArtwork = false
     @Published var firstManual = true
+    @Published var nowPlayingItem: MPMediaItem? = nil
     var nowWidth: CGFloat = 0.0
     var nowHeight: CGFloat = 0.0
     
@@ -38,6 +39,17 @@ final class Music: ObservableObject {
     }
 
     init() {
+        if let nowPlayingItem = self.player.nowPlayingItem  {
+            self.nowPlayingItem = nowPlayingItem
+        }
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(forName: .MPMusicPlayerControllerNowPlayingItemDidChange, object: self.player, queue: nil, using: { notification in
+            print("change item")
+            if let nowPlayingItem = self.player.nowPlayingItem  {
+                self.nowPlayingItem = nowPlayingItem
+            }
+        })
+        player.beginGeneratingPlaybackNotifications()
         self.load()
     }
     
