@@ -118,6 +118,7 @@ struct ArtworskView: View {
                 })
                 .onAppear() {
                     print("onApper()")
+                    self.music.setIsIdleTimerDisabled(lock: self.music.autoLock)
                     self.music.albums(width: geometry.size.width, height: geometry.size.height)
                 }
                 .onChange(of: scenePhase, perform: { value in

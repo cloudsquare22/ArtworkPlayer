@@ -21,6 +21,11 @@ final class Music: ObservableObject {
     @Published var dispOperationArtwork = false
     @Published var firstManual = true
     @Published var nowPlayingItem: MPMediaItem? = nil
+    @Published var autoLock = true  {
+        willSet {
+            setIsIdleTimerDisabled(lock: newValue)
+        }
+    }
     var nowWidth: CGFloat = 0.0
     var nowHeight: CGFloat = 0.0
     
@@ -78,6 +83,9 @@ final class Music: ObservableObject {
         if let firstManual = userdefault.object(forKey: "firstManual") as? Bool {
             self.firstManual = firstManual
         }
+        if let autoLock = userdefault.object(forKey: "autoLock") as? Bool {
+            self.autoLock = autoLock
+        }
     }
     
     func save() {
@@ -89,6 +97,7 @@ final class Music: ObservableObject {
         self.userdefault.set(self.circleShape, forKey: "circleShape")
         self.userdefault.set(self.dispOperationArtwork, forKey: "dispOperationArtwork")
         self.userdefault.set(self.firstManual, forKey: "firstManual")
+        self.userdefault.set(self.autoLock, forKey: "autoLock")
     }
 
     func albums() {
@@ -251,5 +260,11 @@ final class Music: ObservableObject {
     
     func toColorTitle(selct: Int) -> String {
         Music.SETTINGCOLOR[selct].2
+    }
+
+    func setIsIdleTimerDisabled(lock:Bool) {
+        print(lock)
+        UIApplication.shared.isIdleTimerDisabled = !lock
+        print("autoLock:\(UIApplication.shared.isIdleTimerDisabled)")
     }
 }

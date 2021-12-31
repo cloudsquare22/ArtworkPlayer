@@ -60,6 +60,12 @@ struct CommonSettingView: View {
                     self.music.save()
                     NotificationCenter.default.post(name: .changeArtwork, object: nil)
                 }
+            Toggle(isOn: self.$music.autoLock, label: {
+                Text("Auto Lock")
+            })
+                .onChange(of: self.music.autoLock) {newValue in
+                    self.music.save()
+                }
         }
     }
 }
