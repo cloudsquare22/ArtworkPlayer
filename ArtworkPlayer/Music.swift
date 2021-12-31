@@ -26,6 +26,8 @@ final class Music: ObservableObject {
             setIsIdleTimerDisabled(lock: newValue)
         }
     }
+    @Published var selectLibrary: UInt64 = 0
+    @Published var playlistList: [(UInt64, String)] = []
     var nowWidth: CGFloat = 0.0
     var nowHeight: CGFloat = 0.0
     
@@ -55,6 +57,7 @@ final class Music: ObservableObject {
             }
         })
         player.beginGeneratingPlaybackNotifications()
+        self.setPlaylistList()
         self.load()
     }
     
@@ -157,7 +160,15 @@ final class Music: ObservableObject {
         self.viewCollections = []
         let mPMediaQuery = MPMediaQuery.albums()
         mPMediaQuery.addFilterPredicate(iCloudFilter)
-        if let collections = mPMediaQuery.collections {
+        var collections: [MPMediaItemCollection]? = []
+        if self.selectLibrary == 0 {
+            collections = mPMediaQuery.collections
+        }
+        else {
+            collections = self.playList(playlistid: self.selectLibrary)
+        }
+        
+        if let collections = collections, collections.count > 0 {
             print(collections.count)
             let randomcollections = collections.randomSample(count: collections.count).filter({collection in collection.items.count >= self.minTracks})
             print(randomcollections.count)
@@ -266,5 +277,63 @@ final class Music: ObservableObject {
         print(lock)
         UIApplication.shared.isIdleTimerDisabled = !lock
         print("autoLock:\(UIApplication.shared.isIdleTimerDisabled)")
+    }
+    
+    func playList(playlistid: UInt64) -> [MPMediaItemCollection] {
+        var result: [MPMediaItemCollection] = []
+        let iCloudFilter = MPMediaPropertyPredicate(value: true,
+                                                    forProperty: MPMediaItemPropertyIsCloudItem,
+                                                    comparisonType: .equalTo)
+        let idFilter = MPMediaPropertyPredicate(value: playlistid,
+                                                forProperty: MPMediaPlaylistPropertyPersistentID,
+                                                comparisonType: .equalTo)
+
+        let mPMediaQuery = MPMediaQuery.playlists()
+        mPMediaQuery.addFilterPredicate(iCloudFilter)
+        mPMediaQuery.addFilterPredicate(idFilter)
+        if let collections = mPMediaQuery.collections, collections.count > 0 {
+            var maps: [UInt64:MPMediaItemCollection] = [:]
+            for item in collections[0].items {
+                if self.iCloud == false, item.isCloudItem == true {
+                    continue
+                }
+                print(String(item.albumPersistentID) + ":" + item.albumTitle! + ":" + item.title!)
+                if let itemCollection = maps[item.albumPersistentID] {
+                    var items = itemCollection.items
+                    items.append(item)
+                    let itemCollection = MPMediaItemCollection(items: items)
+                    maps[item.albumPersistentID] = itemCollection
+                }
+                else {
+                    let itemCollection = MPMediaItemCollection(items: [item])
+                    maps[item.albumPersistentID] = itemCollection
+                }
+            }
+            print(maps.count)
+            for map in maps {
+                result.append(map.value)
+            }
+        }
+        return result
+    }
+    
+    func setPlaylistList() {
+        print(#function)
+        let iCloudFilter = MPMediaPropertyPredicate(value: true,
+                                                    forProperty: MPMediaItemPropertyIsCloudItem,
+                                                    comparisonType: .equalTo)
+        let mPMediaQuery = MPMediaQuery.playlists()
+        mPMediaQuery.addFilterPredicate(iCloudFilter)
+        if let collections = mPMediaQuery.collections {
+            for collection in collections {
+                if (collection.mediaTypes == .music) && (collection.items.count > 0) {
+                    if let id = collection.value(forProperty: MPMediaPlaylistPropertyPersistentID) as? UInt64,
+                        let name = collection.value(forProperty: MPMediaPlaylistPropertyName) as? String {
+                        print("playlist:(\(id), \(name))")
+                        self.playlistList.append((id, name))
+                    }
+                }
+            }
+        }
     }
 }

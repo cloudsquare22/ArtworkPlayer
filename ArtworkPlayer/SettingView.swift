@@ -92,6 +92,20 @@ struct FilterSettingView: View {
                     self.music.save()
                     NotificationCenter.default.post(name: .changeArtwork, object: nil)
                 }
+            Picker(selection: self.$music.selectLibrary, content: {
+                Label("Music Library", systemImage: "opticaldisc")
+                    .tag(UInt64(0))
+                ForEach(0..<self.music.playlistList.count, id: \.self) { index in
+                    Label(self.music.playlistList[index].1, systemImage: "ipod")
+                        .tag(self.music.playlistList[index].0)
+                }
+            }, label: {
+                Text("Library")
+            })
+                .onChange(of: self.music.selectLibrary, perform: { newvalue in
+                    self.music.save()
+                    NotificationCenter.default.post(name: .changeArtwork, object: nil)
+                })
         }
     }
 }
