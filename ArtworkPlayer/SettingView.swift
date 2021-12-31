@@ -103,6 +103,7 @@ struct FilterSettingView: View {
                 Text("Library")
             })
                 .onChange(of: self.music.selectLibrary, perform: { newvalue in
+                    self.music.matchSelectLibrary(selectLibrary: self.music.selectLibrary)
                     self.music.save()
                     NotificationCenter.default.post(name: .changeArtwork, object: nil)
                 })
@@ -168,7 +169,7 @@ struct AboutView: View {
                 HStack {
                     Spacer()
                     Image("cloudsquare")
-                    Text("©️ 2021 cloudsquare.jp")
+                    Text("©️ 2022 cloudsquare.jp")
                         .font(.footnote)
                     Spacer()
                 }

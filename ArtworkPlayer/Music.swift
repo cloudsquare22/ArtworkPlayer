@@ -58,7 +58,6 @@ final class Music: ObservableObject {
         })
         player.beginGeneratingPlaybackNotifications()
         self.load()
-        self.setPlaylistList()
     }
     
     func load() {
@@ -90,7 +89,7 @@ final class Music: ObservableObject {
             self.autoLock = autoLock
         }
         if let selectLibrary = userdefault.object(forKey: "selectLibrary") as? UInt64 {
-            self.selectLibrary = selectLibrary
+            self.matchSelectLibrary(selectLibrary: selectLibrary)
         }
     }
     
@@ -323,6 +322,7 @@ final class Music: ObservableObject {
     
     func setPlaylistList() {
         print(#function)
+        self.playlistList = []
         let iCloudFilter = MPMediaPropertyPredicate(value: true,
                                                     forProperty: MPMediaItemPropertyIsCloudItem,
                                                     comparisonType: .equalTo)
@@ -337,6 +337,17 @@ final class Music: ObservableObject {
                         self.playlistList.append((id, name))
                     }
                 }
+            }
+        }
+    }
+    
+    func matchSelectLibrary(selectLibrary: UInt64) {
+        self.selectLibrary = 0
+        self.setPlaylistList()
+        for playlist in self.playlistList {
+            if playlist.0 == selectLibrary {
+                self.selectLibrary = selectLibrary
+                break
             }
         }
     }
