@@ -86,7 +86,14 @@ struct ArtworskView: View {
                                         .clipShape(Circle())
                                 }
                                 else {
-                                    EmptyView()
+                                    Image(systemName: "ipod")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
+                                        .overlay(content: {
+                                            Circle().fill(.black).opacity(0.4)
+                                        })
+                                        .clipShape(Circle())
                                 }
                             })
                             .frame(width: self.music.artworkSize - 4, height: self.music.artworkSize - 4, alignment: .center)
