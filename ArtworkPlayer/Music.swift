@@ -57,8 +57,8 @@ final class Music: ObservableObject {
             }
         })
         player.beginGeneratingPlaybackNotifications()
-        self.setPlaylistList()
         self.load()
+        self.setPlaylistList()
     }
     
     func load() {
@@ -89,6 +89,9 @@ final class Music: ObservableObject {
         if let autoLock = userdefault.object(forKey: "autoLock") as? Bool {
             self.autoLock = autoLock
         }
+        if let selectLibrary = userdefault.object(forKey: "selectLibrary") as? UInt64 {
+            self.selectLibrary = selectLibrary
+        }
     }
     
     func save() {
@@ -101,6 +104,7 @@ final class Music: ObservableObject {
         self.userdefault.set(self.dispOperationArtwork, forKey: "dispOperationArtwork")
         self.userdefault.set(self.firstManual, forKey: "firstManual")
         self.userdefault.set(self.autoLock, forKey: "autoLock")
+        self.userdefault.set(self.selectLibrary, forKey: "selectLibrary")
     }
 
     func albums() {
