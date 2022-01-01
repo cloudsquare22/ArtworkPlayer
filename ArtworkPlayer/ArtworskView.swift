@@ -47,6 +47,13 @@ struct ArtworskView: View {
                         ForEach(0..<self.music.viewCollections.count, id: \.self) { index in
                             ArtworkView(collection: self.music.viewCollections[index])
                         }
+//                        // アプリ公開用シミュレータ向けコード
+//                        ForEach(0..<77) { index in
+//                            Image(systemName: "opticaldisc")
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
+//                        }
                         if self.music.dispOperationArtwork == true {
                             VStack(spacing: 8.0) {
                                 Button(action: {
