@@ -10,6 +10,7 @@
 		8D95BC7F27734EE800CA83E7 /* ManualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BC7E27734EE800CA83E7 /* ManualView.swift */; };
 		8D95BC822774981500CA83E7 /* ExtentionNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BC812774981500CA83E7 /* ExtentionNotification.swift */; };
 		8D95BCA9277B1CE100CA83E7 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BCA8277B1CE100CA83E7 /* FirstView.swift */; };
+		8D95BCFB278AFAAE00CA83E7 /* XYZSwiftUIParts in Frameworks */ = {isa = PBXBuildFile; productRef = 8D95BCFA278AFAAE00CA83E7 /* XYZSwiftUIParts */; };
 		8D997BB3275F7798000E4607 /* ArtworkPlayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D997BB2275F7798000E4607 /* ArtworkPlayerApp.swift */; };
 		8D997BB5275F7798000E4607 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D997BB4275F7798000E4607 /* ContentView.swift */; };
 		8D997BB7275F779B000E4607 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D997BB6275F779B000E4607 /* Assets.xcassets */; };
@@ -18,7 +19,6 @@
 		8D997BC6275F787D000E4607 /* ArtworskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D997BC5275F787D000E4607 /* ArtworskView.swift */; };
 		8D997BC9275F80E0000E4607 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 8D997BC8275F80E0000E4607 /* Algorithms */; };
 		8D997BCB2760E39E000E4607 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D997BCA2760E39E000E4607 /* SettingView.swift */; };
-		8D9A3308276377C6003E445A /* NumberPlusMinusInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9A3307276377C6003E445A /* NumberPlusMinusInputView.swift */; };
 		8DDDC22E276A10D70050A235 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8DDDC230276A10D70050A235 /* InfoPlist.strings */; };
 		8DDDC234276A12A60050A235 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8DDDC236276A12A60050A235 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -37,7 +37,6 @@
 		8D997BC3275F783D000E4607 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		8D997BC5275F787D000E4607 /* ArtworskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworskView.swift; sourceTree = "<group>"; };
 		8D997BCA2760E39E000E4607 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		8D9A3307276377C6003E445A /* NumberPlusMinusInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPlusMinusInputView.swift; sourceTree = "<group>"; };
 		8DDDC231276A10E80050A235 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8DDDC235276A12A60050A235 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -48,6 +47,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D997BC9275F80E0000E4607 /* Algorithms in Frameworks */,
+				8D95BCFB278AFAAE00CA83E7 /* XYZSwiftUIParts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +81,6 @@
 				8D997BC3275F783D000E4607 /* Music.swift */,
 				8D997BC5275F787D000E4607 /* ArtworskView.swift */,
 				8D997BCA2760E39E000E4607 /* SettingView.swift */,
-				8D9A3307276377C6003E445A /* NumberPlusMinusInputView.swift */,
 				8DDDC230276A10D70050A235 /* InfoPlist.strings */,
 				8DDDC236276A12A60050A235 /* Localizable.strings */,
 				8D95BC7E27734EE800CA83E7 /* ManualView.swift */,
@@ -117,6 +116,7 @@
 			name = ArtworkPlayer;
 			packageProductDependencies = (
 				8D997BC8275F80E0000E4607 /* Algorithms */,
+				8D95BCFA278AFAAE00CA83E7 /* XYZSwiftUIParts */,
 			);
 			productName = ArtworkPlayer;
 			productReference = 8D997BAF275F7798000E4607 /* ArtworkPlayer.app */;
@@ -149,6 +149,7 @@
 			mainGroup = 8D997BA6275F7798000E4607;
 			packageReferences = (
 				8D997BC7275F80E0000E4607 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				8D95BCF9278AFAAD00CA83E7 /* XCRemoteSwiftPackageReference "XYZSwiftUIParts" */,
 			);
 			productRefGroup = 8D997BB0275F7798000E4607 /* Products */;
 			projectDirPath = "";
@@ -180,7 +181,6 @@
 			files = (
 				8D997BB5275F7798000E4607 /* ContentView.swift in Sources */,
 				8D997BCB2760E39E000E4607 /* SettingView.swift in Sources */,
-				8D9A3308276377C6003E445A /* NumberPlusMinusInputView.swift in Sources */,
 				8D95BC822774981500CA83E7 /* ExtentionNotification.swift in Sources */,
 				8D997BC6275F787D000E4607 /* ArtworskView.swift in Sources */,
 				8D997BC4275F783D000E4607 /* Music.swift in Sources */,
@@ -419,6 +419,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8D95BCF9278AFAAD00CA83E7 /* XCRemoteSwiftPackageReference "XYZSwiftUIParts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cloudsquare22/XYZSwiftUIParts";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		8D997BC7275F80E0000E4607 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
@@ -430,6 +438,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8D95BCFA278AFAAE00CA83E7 /* XYZSwiftUIParts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8D95BCF9278AFAAD00CA83E7 /* XCRemoteSwiftPackageReference "XYZSwiftUIParts" */;
+			productName = XYZSwiftUIParts;
+		};
 		8D997BC8275F80E0000E4607 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8D997BC7275F80E0000E4607 /* XCRemoteSwiftPackageReference "swift-algorithms" */;

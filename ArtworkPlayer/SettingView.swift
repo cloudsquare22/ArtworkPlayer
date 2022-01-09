@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import XYZSwiftUIParts
 
 struct SettingView: View {
     @EnvironmentObject var music: Music
