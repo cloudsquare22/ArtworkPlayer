@@ -79,6 +79,7 @@ struct FilterSettingView: View {
                 Text("Use iCloud")
             })
                 .onChange(of: self.music.iCloud) {newValue in
+                    self.music.setPlaylistList()
                     self.music.save()
                     NotificationCenter.default.post(name: .changeArtwork, object: nil)
                 }

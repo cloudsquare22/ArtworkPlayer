@@ -57,6 +57,7 @@ final class Music: ObservableObject {
             }
         })
         player.beginGeneratingPlaybackNotifications()
+        self.setPlaylistList()
         self.load()
     }
     
