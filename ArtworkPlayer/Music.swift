@@ -28,6 +28,7 @@ final class Music: ObservableObject {
     }
     @Published var selectLibrary: UInt64 = 0
     @Published var playlistList: [(UInt64, String)] = []
+    @Published var useSmartPlaylist = false
     var nowWidth: CGFloat = 0.0
     var nowHeight: CGFloat = 0.0
     
@@ -92,6 +93,9 @@ final class Music: ObservableObject {
         if let selectLibrary = userdefault.object(forKey: "selectLibrary") as? UInt64 {
             self.matchSelectLibrary(selectLibrary: selectLibrary)
         }
+        if let useSmartPlaylist = userdefault.object(forKey: "useSmartPlaylist") as? Bool {
+            self.useSmartPlaylist = useSmartPlaylist
+        }
     }
     
     func save() {
@@ -105,6 +109,7 @@ final class Music: ObservableObject {
         self.userdefault.set(self.firstManual, forKey: "firstManual")
         self.userdefault.set(self.autoLock, forKey: "autoLock")
         self.userdefault.set(self.selectLibrary, forKey: "selectLibrary")
+        self.userdefault.set(self.useSmartPlaylist, forKey: "useSmartPlaylist")
     }
 
     func albums() {
@@ -321,6 +326,14 @@ final class Music: ObservableObject {
         return result
     }
     
+    fileprivate func appendPlaylistList(_ collection: MPMediaItemCollection) {
+        if let id = collection.value(forProperty: MPMediaPlaylistPropertyPersistentID) as? UInt64,
+           let name = collection.value(forProperty: MPMediaPlaylistPropertyName) as? String {
+            print("playlist:(\(id), \(name))")
+            self.playlistList.append((id, name))
+        }
+    }
+    
     func setPlaylistList() {
         print(#function)
         self.playlistList = []
@@ -331,12 +344,12 @@ final class Music: ObservableObject {
         mPMediaQuery.addFilterPredicate(iCloudFilter)
         if let collections = mPMediaQuery.collections {
             for collection in collections {
+                print("mediaTypes:\(collection.mediaTypes.rawValue)")
                 if (collection.mediaTypes == .music) && (collection.items.count > 0) {
-                    if let id = collection.value(forProperty: MPMediaPlaylistPropertyPersistentID) as? UInt64,
-                        let name = collection.value(forProperty: MPMediaPlaylistPropertyName) as? String {
-                        print("playlist:(\(id), \(name))")
-                        self.playlistList.append((id, name))
-                    }
+                    appendPlaylistList(collection)
+                }
+                else if (self.useSmartPlaylist == true) && (collection.mediaTypes.rawValue == 0) && (collection.items.count > 0) {
+                    appendPlaylistList(collection)
                 }
             }
         }
