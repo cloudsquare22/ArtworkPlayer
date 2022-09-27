@@ -58,7 +58,6 @@ final class Music: ObservableObject {
             }
         })
         player.beginGeneratingPlaybackNotifications()
-        self.setPlaylistList()
         self.load()
     }
     
@@ -90,11 +89,12 @@ final class Music: ObservableObject {
         if let autoLock = userdefault.object(forKey: "autoLock") as? Bool {
             self.autoLock = autoLock
         }
-        if let selectLibrary = userdefault.object(forKey: "selectLibrary") as? UInt64 {
-            self.matchSelectLibrary(selectLibrary: selectLibrary)
-        }
         if let useSmartPlaylist = userdefault.object(forKey: "useSmartPlaylist") as? Bool {
             self.useSmartPlaylist = useSmartPlaylist
+        }
+        self.setPlaylistList()
+        if let selectLibrary = userdefault.object(forKey: "selectLibrary") as? UInt64 {
+            self.matchSelectLibrary(selectLibrary: selectLibrary)
         }
     }
     

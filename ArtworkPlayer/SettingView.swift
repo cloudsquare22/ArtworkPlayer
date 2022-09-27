@@ -115,6 +115,7 @@ struct FilterSettingView: View {
                 .onChange(of: self.music.useSmartPlaylist) {newValue in
                     self.music.save()
                     self.music.setPlaylistList()
+                    self.music.matchSelectLibrary(selectLibrary: self.music.selectLibrary)
                 }
         }
     }
