@@ -176,6 +176,15 @@ struct ArtworkView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
+//                .overlay(content: {
+//                    if collection.representativeItem!.artwork == nil {
+//                        Text(collection.representativeItem!.albumTitle!)
+//                            .background(content: {
+//                                Color.gray
+//                            })
+//                            .padding(8.0)
+//                    }
+//                })
                 .clipShape(Circle())
                 .onTapGesture(count: 2) {
                     self.music.play(collection: self.collection, shuffle: self.music.shufflePlay)
