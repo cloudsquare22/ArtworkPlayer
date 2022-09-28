@@ -29,6 +29,7 @@ final class Music: ObservableObject {
     @Published var selectLibrary: UInt64 = 0
     @Published var playlistList: [(UInt64, String)] = []
     @Published var useSmartPlaylist = false
+    @Published var noartwotkTitle = false
     var nowWidth: CGFloat = 0.0
     var nowHeight: CGFloat = 0.0
     
@@ -92,6 +93,9 @@ final class Music: ObservableObject {
         if let useSmartPlaylist = userdefault.object(forKey: "useSmartPlaylist") as? Bool {
             self.useSmartPlaylist = useSmartPlaylist
         }
+        if let noartwotkTitle = userdefault.object(forKey: "noartwotkTitle") as? Bool {
+            self.noartwotkTitle = noartwotkTitle
+        }
         self.setPlaylistList()
         if let selectLibrary = userdefault.object(forKey: "selectLibrary") as? UInt64 {
             self.matchSelectLibrary(selectLibrary: selectLibrary)
@@ -110,6 +114,7 @@ final class Music: ObservableObject {
         self.userdefault.set(self.autoLock, forKey: "autoLock")
         self.userdefault.set(self.selectLibrary, forKey: "selectLibrary")
         self.userdefault.set(self.useSmartPlaylist, forKey: "useSmartPlaylist")
+        self.userdefault.set(self.noartwotkTitle, forKey: "noartwotkTitle")
     }
 
     func albums() {
@@ -210,6 +215,9 @@ final class Music: ObservableObject {
     
     func artwork(item: MPMediaItem) -> Image? {
         var result: Image? = nil
+        if self.noartwotkTitle == false {
+            result = Image(systemName: "opticaldisc")
+        }
         if let value = item.artwork {
             if let image = value.image(at: CGSize(width: value.bounds.width, height: value.bounds.height)) {
                 result = Image(uiImage: image)
