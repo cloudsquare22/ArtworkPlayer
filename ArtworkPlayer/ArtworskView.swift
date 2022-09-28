@@ -170,7 +170,7 @@ struct ArtworkView: View {
     @State private var isShowingPopover = false
     
     var body: some View {
-        let artwork: Image? = self.music.artwork(item: collection.representativeItem!)
+        let artwork: Image? = self.music.artwork(item: collection.representativeItem!, noartwotkTitle: self.music.noartwotkTitle)
         if self.music.circleShape == true {
             if let artwork = artwork {
                 artwork

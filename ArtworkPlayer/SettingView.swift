@@ -155,6 +155,12 @@ struct DispSettingView: View {
                 .onChange(of: self.music.circleShape) {newValue in
                     self.music.save()
                 }
+            Toggle(isOn: self.$music.noartwotkTitle, label: {
+                Text("Title display when no artwork")
+            })
+                .onChange(of: self.music.noartwotkTitle) {newValue in
+                    self.music.save()
+                }
         }
     }
 }
