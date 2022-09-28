@@ -83,7 +83,7 @@ struct ArtworskView: View {
                             .foregroundColor(.white)
                             .background(content: {
                                 if let nowPlayingItem = self.music.nowPlayingItem {
-                                    self.music.artwork(item: nowPlayingItem)
+                                    self.music.artwork(item: nowPlayingItem)!
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
@@ -283,7 +283,7 @@ struct AlbumInformationView: View {
             HStack {
                 Spacer()
                 let artwork = self.music.artwork(item: item)
-                artwork
+                artwork!
                     .resizable()
                     .scaledToFit()
                     .frame(width: 300, height: 300, alignment: .center)

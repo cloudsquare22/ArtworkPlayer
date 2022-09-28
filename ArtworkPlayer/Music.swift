@@ -203,19 +203,9 @@ final class Music: ObservableObject {
         print(self.viewCollections.count)
     }
 
-    func artwork(item: MPMediaItem) -> Image {
-        var result: Image = Image(systemName: "opticaldisc")
-        if let value = item.artwork {
-            if let image = value.image(at: CGSize(width: value.bounds.width, height: value.bounds.height)) {
-                result = Image(uiImage: image)
-            }
-        }
-        return result
-    }
-    
-    func artwork(item: MPMediaItem) -> Image? {
+    func artwork(item: MPMediaItem, noartwotkTitle: Bool = false) -> Image? {
         var result: Image? = nil
-        if self.noartwotkTitle == false {
+        if noartwotkTitle == false {
             result = Image(systemName: "opticaldisc")
         }
         if let value = item.artwork {
