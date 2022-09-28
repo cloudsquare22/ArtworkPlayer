@@ -215,22 +215,47 @@ struct ArtworkView: View {
                     }
             }
         }
-//        else {
-//            artwork
-//                .resizable()
-//                .scaledToFit()
-//                .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
-//                .onTapGesture(count: 2) {
-//                    self.music.play(collection: self.collection, shuffle: self.music.shufflePlay)
-//                }
-//                .onTapGesture {
-//                    self.isShowingPopover.toggle()
-//                }
-//                .popover(isPresented: $isShowingPopover) {
-//                    AlbumInformationView(collection: self.collection)
-//                }
-//
-//        }
+        else {
+            if let artwork = artwork {
+                artwork
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
+                    .overlay(content: {
+                        Rectangle().stroke(lineWidth: 0.5)
+                    })
+                    .onTapGesture(count: 2) {
+                        self.music.play(collection: self.collection, shuffle: self.music.shufflePlay)
+                    }
+                    .onTapGesture {
+                        self.isShowingPopover.toggle()
+                    }
+                    .popover(isPresented: $isShowingPopover) {
+                        AlbumInformationView(collection: self.collection)
+                    }
+            }
+            else {
+                Text(self.collection.representativeItem!.albumTitle!)
+                    .lineLimit(3)
+                    .padding(8.0)
+                    .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
+                    .background(content: {
+                        Rectangle().fill(.black).opacity(0.4)
+                    })
+                    .overlay(content: {
+                        Rectangle().stroke(lineWidth: 0.5)
+                    })
+                    .onTapGesture(count: 2) {
+                        self.music.play(collection: self.collection, shuffle: self.music.shufflePlay)
+                    }
+                    .onTapGesture {
+                        self.isShowingPopover.toggle()
+                    }
+                    .popover(isPresented: $isShowingPopover) {
+                        AlbumInformationView(collection: self.collection)
+                    }
+            }
+        }
     }
 }
 
