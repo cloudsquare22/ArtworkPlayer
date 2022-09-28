@@ -208,6 +208,16 @@ final class Music: ObservableObject {
         return result
     }
     
+    func artwork(item: MPMediaItem) -> Image? {
+        var result: Image? = nil
+        if let value = item.artwork {
+            if let image = value.image(at: CGSize(width: value.bounds.width, height: value.bounds.height)) {
+                result = Image(uiImage: image)
+            }
+        }
+        return result
+    }
+
     func albumInformation(item: MPMediaItem) -> (String, String) {
         var result = ("", "")
         if let albumTitle = item.albumTitle {

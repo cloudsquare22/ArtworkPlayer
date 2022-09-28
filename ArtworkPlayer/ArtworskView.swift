@@ -170,48 +170,67 @@ struct ArtworkView: View {
     @State private var isShowingPopover = false
     
     var body: some View {
-        let artwork = self.music.artwork(item: collection.representativeItem!)
+        let artwork: Image? = self.music.artwork(item: collection.representativeItem!)
         if self.music.circleShape == true {
-            artwork
-                .resizable()
-                .scaledToFit()
-                .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
-//                .overlay(content: {
-//                    if collection.representativeItem!.artwork == nil {
-//                        Text(collection.representativeItem!.albumTitle!)
-//                            .background(content: {
-//                                Color.gray
-//                            })
-//                            .padding(8.0)
-//                    }
-//                })
-                .clipShape(Circle())
-                .onTapGesture(count: 2) {
-                    self.music.play(collection: self.collection, shuffle: self.music.shufflePlay)
-                }
-                .onTapGesture {
-                    self.isShowingPopover.toggle()
-                }
-                .popover(isPresented: $isShowingPopover) {
-                    AlbumInformationView(collection: self.collection)
-                }
-        }
-        else {
-            artwork
-                .resizable()
-                .scaledToFit()
-                .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
-                .onTapGesture(count: 2) {
-                    self.music.play(collection: self.collection, shuffle: self.music.shufflePlay)
-                }
-                .onTapGesture {
-                    self.isShowingPopover.toggle()
-                }
-                .popover(isPresented: $isShowingPopover) {
-                    AlbumInformationView(collection: self.collection)
-                }
+            if let artwork = artwork {
+                artwork
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
+                    .clipShape(Circle())
+                    .overlay(content: {
+                        Circle().stroke(lineWidth: 0.5)
+                    })
+                    .onTapGesture(count: 2) {
+                        self.music.play(collection: self.collection, shuffle: self.music.shufflePlay)
+                    }
+                    .onTapGesture {
+                        self.isShowingPopover.toggle()
+                    }
+                    .popover(isPresented: $isShowingPopover) {
+                        AlbumInformationView(collection: self.collection)
+                    }
 
+            }
+            else {
+                Text(self.collection.representativeItem!.albumTitle!)
+                    .lineLimit(3)
+                    .padding(8.0)
+                    .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
+                    .background(content: {
+                        Circle().fill(.black).opacity(0.4)
+                    })
+                    .clipShape(Circle())
+                    .overlay(content: {
+                        Circle().stroke(lineWidth: 0.5)
+                    })
+                    .onTapGesture(count: 2) {
+                        self.music.play(collection: self.collection, shuffle: self.music.shufflePlay)
+                    }
+                    .onTapGesture {
+                        self.isShowingPopover.toggle()
+                    }
+                    .popover(isPresented: $isShowingPopover) {
+                        AlbumInformationView(collection: self.collection)
+                    }
+            }
         }
+//        else {
+//            artwork
+//                .resizable()
+//                .scaledToFit()
+//                .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
+//                .onTapGesture(count: 2) {
+//                    self.music.play(collection: self.collection, shuffle: self.music.shufflePlay)
+//                }
+//                .onTapGesture {
+//                    self.isShowingPopover.toggle()
+//                }
+//                .popover(isPresented: $isShowingPopover) {
+//                    AlbumInformationView(collection: self.collection)
+//                }
+//
+//        }
     }
 }
 
