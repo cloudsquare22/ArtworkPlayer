@@ -104,11 +104,12 @@ struct FilterSettingView: View {
             }, label: {
                 Text("Library")
             })
-                .onChange(of: self.music.selectLibrary, perform: { newvalue in
-                    self.music.matchSelectLibrary(selectLibrary: self.music.selectLibrary)
-                    self.music.save()
-                    NotificationCenter.default.post(name: .changeArtwork, object: nil)
-                })
+            .pickerStyle(.menu)
+            .onChange(of: self.music.selectLibrary, perform: { newvalue in
+                self.music.matchSelectLibrary(selectLibrary: self.music.selectLibrary)
+                self.music.save()
+                NotificationCenter.default.post(name: .changeArtwork, object: nil)
+            })
             Toggle(isOn: self.$music.useSmartPlaylist, label: {
                 Text("Use Smart Playlist")
             })
@@ -146,9 +147,10 @@ struct DispSettingView: View {
             }, label: {
                 Text("Background Color")
             })
-                .onChange(of: self.music.backgroundColor) {newValue in
-                    self.music.save()
-                }
+            .pickerStyle(.menu)
+            .onChange(of: self.music.backgroundColor) {newValue in
+                self.music.save()
+            }
             Toggle(isOn: self.$music.circleShape, label: {
                 Text("Artwork of circle shape")
             })
