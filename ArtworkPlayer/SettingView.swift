@@ -137,12 +137,9 @@ struct DispSettingView: View {
                 }
             Picker(selection: self.$music.backgroundColor, content: {
                 ForEach(0..<Music.SETTINGCOLOR.count, id: \.self) { index in
-                    HStack {
-                        Image(systemName: "paintpalette.fill")
-                            .foregroundColor(self.music.toColor(selct: index))
-                        Text(NSLocalizedString(self.music.toColorTitle(selct: index), comment: ""))
-                    }
-                    .tag(index)
+                    Label(NSLocalizedString(self.music.toColorTitle(selct: index), comment: ""), systemImage: "paintpalette.fill")
+                        .foregroundColor(self.music.toColor(selct: index))
+                        .tag(index)
                 }
             }, label: {
                 Text("Background Color")
