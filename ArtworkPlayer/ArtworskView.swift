@@ -198,7 +198,7 @@ struct ArtworkView: View {
                     .padding(8.0)
                     .frame(width: self.music.artworkSize - 2, height: self.music.artworkSize - 2, alignment: .center)
                     .background(content: {
-                        Circle().fill(.black).opacity(0.4)
+                        Circle().fill(.black).opacity(0.1)
                     })
                     .clipShape(Circle())
                     .overlay(content: {
