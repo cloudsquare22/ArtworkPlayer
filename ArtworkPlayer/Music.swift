@@ -361,6 +361,9 @@ final class Music: ObservableObject {
                 }
             }
         }
+        self.playlistList.sort(by: { m1 , m2 in
+            m1.1 < m2.1
+        })
     }
     
     func matchSelectLibrary(selectLibrary: UInt64) {
