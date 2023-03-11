@@ -110,14 +110,14 @@ struct FilterSettingView: View {
                 self.music.save()
                 NotificationCenter.default.post(name: .changeArtwork, object: nil)
             })
-            Toggle(isOn: self.$music.useSmartPlaylist, label: {
-                Text("Use Smart Playlist")
-            })
-                .onChange(of: self.music.useSmartPlaylist) {newValue in
-                    self.music.save()
-                    self.music.setPlaylistList()
-                    self.music.matchSelectLibrary(selectLibrary: self.music.selectLibrary)
-                }
+//            Toggle(isOn: self.$music.useSmartPlaylist, label: {
+//                Text("Use Smart Playlist")
+//            })
+//                .onChange(of: self.music.useSmartPlaylist) {newValue in
+//                    self.music.save()
+//                    self.music.setPlaylistList()
+//                    self.music.matchSelectLibrary(selectLibrary: self.music.selectLibrary)
+//                }
         }
     }
 }
