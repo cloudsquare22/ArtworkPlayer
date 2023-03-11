@@ -135,18 +135,22 @@ struct DispSettingView: View {
                     self.music.save()
                     NotificationCenter.default.post(name: .changeArtwork, object: nil)
                 }
-            Picker(selection: self.$music.backgroundColor, content: {
-                ForEach(0..<Music.SETTINGCOLOR.count, id: \.self) { index in
-                    Label(NSLocalizedString(self.music.toColorTitle(selct: index), comment: ""), systemImage: "paintpalette.fill")
-                        .foregroundColor(self.music.toColor(selct: index))
-                        .tag(index)
-                }
-            }, label: {
+            HStack {
                 Text("Background Color")
-            })
-            .pickerStyle(.menu)
-            .onChange(of: self.music.backgroundColor) {newValue in
-                self.music.save()
+                Picker(selection: self.$music.backgroundColor, content: {
+                    ForEach(0..<Music.SETTINGCOLOR.count, id: \.self) { index in
+                        Label(NSLocalizedString(self.music.toColorTitle(selct: index), comment: ""), systemImage: "paintpalette.fill")
+                            .foregroundColor(self.music.toColor(selct: index))
+                            .tag(index)
+                    }
+                }, label: {
+                    Text("Background Color")
+                })
+                .labelsHidden()
+                .pickerStyle(.wheel)
+                .onChange(of: self.music.backgroundColor) {newValue in
+                    self.music.save()
+                }
             }
             Toggle(isOn: self.$music.circleShape, label: {
                 Text("Artwork of circle shape")
