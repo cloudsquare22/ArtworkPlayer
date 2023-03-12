@@ -12,28 +12,33 @@ struct ManualView: View {
         List {
             Section(header: Label("Artwork", systemImage: "circle.grid.3x3.fill")) {
                 HStack {
-                    Label("Tap", systemImage: "hand.tap")
+                    Text("Tap")
+                    Image(systemName: "hand.tap")
                     Spacer()
                     Text("Display album information")
                 }
                 HStack {
-                    Label("2 Tap", systemImage: "hand.tap")
+                    Text("2 Tap")
+                    Image(systemName: "hand.tap")
                     Spacer()
                     Text("Play album")
                 }
             }
             Section(header: Label("Control artwork", systemImage: "ipod")) {
                 HStack {
+                    Text("Tap")
                     Image(systemName: "gear")
                     Spacer()
                     Text("Display setting screen")
                 }
                 HStack {
+                    Text("Tap")
                     Image(systemName: "arrow.clockwise.circle")
                     Spacer()
                     Text("Artwork update")
                 }
                 HStack {
+                    Text("Tap")
                     Image(systemName: "playpause")
                     Image(systemName: "backward")
                     Image(systemName: "forward")
