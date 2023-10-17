@@ -40,7 +40,8 @@ final class Music: ObservableObject {
         let columnCount = Int(UIScreen.main.bounds.width / self.artworkSize)
         let lineCount = Int((UIScreen.main.bounds.height - 20) / self.artworkSize)
         print("columnCount:\(columnCount),lineCount:\(lineCount), viewCount:\(columnCount * lineCount)")
-        return columnCount * lineCount
+        let result = columnCount * lineCount
+        return result
     }
     let userdefault = UserDefaults.standard
     var artworkSize: CGFloat {
@@ -137,7 +138,7 @@ final class Music: ObservableObject {
                 loopTo = randomcollections.count
             }
             let controlArtworkCount = self.dispOperationArtwork == false ? 2 : 3
-            print("viewCount:\(self.viewCount) loopTo:\(loopTo) ontrolArtworkCount:\(controlArtworkCount)")
+            print("viewCount:\(self.viewCount) loopTo:\(loopTo) controlArtworkCount:\(controlArtworkCount)")
             if (self.viewCount - loopTo) <= controlArtworkCount {
                 loopTo = loopTo - (controlArtworkCount - (self.viewCount - loopTo))
             }
@@ -192,10 +193,12 @@ final class Music: ObservableObject {
                 loopTo = randomcollections.count
             }
             let controlArtworkCount = self.dispOperationArtwork == false ? 2 : 3
-            print("viewCount:\(viewCount) loopTo:\(loopTo) ontrolArtworkCount:\(controlArtworkCount)")
+            print("viewCount:\(viewCount) loopTo:\(loopTo) controlArtworkCount:\(controlArtworkCount)")
             if (viewCount - loopTo) <= controlArtworkCount {
                 loopTo = loopTo - (controlArtworkCount - (viewCount - loopTo))
             }
+            // 二択モードはここで設定
+//            loopTo = 2
             for index in 0..<loopTo {
                 self.viewCollections.append(randomcollections[index])
             }
@@ -375,5 +378,10 @@ final class Music: ObservableObject {
                 break
             }
         }
+    }
+    
+    func getColumnCount(width: Double) -> Int {
+        let columnCount = Int(width / self.artworkSize)
+        return columnCount
     }
 }
