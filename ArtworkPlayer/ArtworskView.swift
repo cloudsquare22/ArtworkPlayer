@@ -152,7 +152,7 @@ struct ArtworskView: View {
 //                    print("music change")
 //                })
             }
-            .edgesIgnoringSafeArea(.all)
+//            .edgesIgnoringSafeArea(.all)
             .background(self.music.toColor(selct: self.music.backgroundColor))
         }
     }
