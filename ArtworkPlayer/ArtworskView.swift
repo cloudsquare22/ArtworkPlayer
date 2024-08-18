@@ -161,6 +161,7 @@ struct ArtworskView: View {
 struct ArtworskView_Previews: PreviewProvider {
     static var previews: some View {
         ArtworskView()
+            .environmentObject(Music())
     }
 }
 
