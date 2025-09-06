@@ -1,10 +1,52 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "CFBundleDisplayName" : {
+      "comment" : "Bundle display name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Artwork Player"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artwork Player"
+          }
+        }
+      }
+    },
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "ArtworkPlayer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ArtworkPlayer"
+          }
+        }
+      }
+    },
     "NSAppleMusicUsageDescription" : {
       "comment" : "InfoPlist.strings\n  ArtworkPlayer\n\n  Created by Shin Inaba on 2021/12/15.",
-      "extractionState" : "migrated",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Access to music selection, information display, and playback."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",

@@ -1,8 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "©️ 2022-2025 cloudsquare.jp" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "©️ 2022-2025 cloudsquare.jp"
+          }
+        }
+      }
+    },
     "2 Tap" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -13,7 +22,6 @@
       }
     },
     "About" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -23,8 +31,17 @@
         }
       }
     },
+    "All play" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All play"
+          }
+        }
+      }
+    },
     "Artwork" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -35,7 +52,6 @@
       }
     },
     "Artwork of circle shape" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -45,8 +61,17 @@
         }
       }
     },
+    "Artwork Player" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artwork Player"
+          }
+        }
+      }
+    },
     "Artwork update" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -57,7 +82,6 @@
       }
     },
     "Auto Lock" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -68,7 +92,6 @@
       }
     },
     "Background Color" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -79,7 +102,6 @@
       }
     },
     "Common" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -90,7 +112,6 @@
       }
     },
     "Control artwork" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -101,7 +122,6 @@
       }
     },
     "Diagram" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -112,7 +132,6 @@
       }
     },
     "Disp" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -123,7 +142,6 @@
       }
     },
     "Disp min tracks" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -134,7 +152,6 @@
       }
     },
     "Disp operation artwork" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -145,7 +162,6 @@
       }
     },
     "Display album information" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -156,7 +172,6 @@
       }
     },
     "Display setting screen" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -167,7 +182,6 @@
       }
     },
     "Filter" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -178,7 +192,6 @@
       }
     },
     "If you don't see the artwork, check to see if it is visible in the Music app." : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -189,7 +202,6 @@
       }
     },
     "Large Artwork Size" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -200,7 +212,6 @@
       }
     },
     "Launch the music app" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -211,7 +222,6 @@
       }
     },
     "Library" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -222,7 +232,6 @@
       }
     },
     "Manual" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -233,7 +242,6 @@
       }
     },
     "Music Library" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -244,7 +252,6 @@
       }
     },
     "Play album" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -255,7 +262,6 @@
       }
     },
     "Play control" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -266,8 +272,6 @@
       }
     },
     "Setting" : {
-      "comment" : "Localizable.strings\n  ArtworkPlayer\n\n  Created by Shin Inaba on 2021/12/15.",
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -277,8 +281,17 @@
         }
       }
     },
+    "Shuffle play" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shuffle play"
+          }
+        }
+      }
+    },
     "Shuffle Play" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -289,7 +302,6 @@
       }
     },
     "Start" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -300,7 +312,6 @@
       }
     },
     "Tap" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -311,7 +322,6 @@
       }
     },
     "The app uses the music library." : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -322,7 +332,6 @@
       }
     },
     "Title display when no artwork" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -333,7 +342,6 @@
       }
     },
     "Use iCloud" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -344,12 +352,22 @@
       }
     },
     "Use Smart Playlist" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "スマートプレイリスト"
+          }
+        }
+      }
+    },
+    "Version %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
           }
         }
       }

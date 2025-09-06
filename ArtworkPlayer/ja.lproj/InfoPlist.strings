@@ -1,8 +1,0 @@
-/* 
-  InfoPlist.strings
-  ArtworkPlayer
-
-  Created by Shin Inaba on 2021/12/15.
-  
-*/
-"NSAppleMusicUsageDescription" = "音楽の選択、情報表示、再生時にアクセス。";
