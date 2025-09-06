@@ -29,6 +29,10 @@ struct LibraryMultiSelectSettingView: View {
                 Label("Library", systemImage: "ipod")
             }
         })
+        .onChange(of: self.music.selectLibrarys, perform: { newvalue in
+            self.music.save()
+            NotificationCenter.default.post(name: .changeArtwork, object: nil)
+        })
     }
 }
 

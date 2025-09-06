@@ -102,6 +102,12 @@ final class Music: ObservableObject {
         if let selectLibrary = userdefault.object(forKey: "selectLibrary") as? UInt64 {
             self.matchSelectLibrary(selectLibrary: selectLibrary)
         }
+        if let selectLibrarys = userdefault.object(forKey: "selectLibrarys") as? [UInt64], selectLibrarys.count != 0 {
+            self.selectLibrarys = selectLibrarys
+        }
+        else {
+            self.selectLibrarys.append(self.selectLibrary)
+        }
     }
     
     func save() {
@@ -181,7 +187,7 @@ final class Music: ObservableObject {
             collections = mPMediaQuery.collections
         }
         else {
-            collections = self.playList(playlistid: self.selectLibrary)
+            collections = self.getAlbumCollectionsFromPlaylits()
         }
         
         if let collections = collections, collections.count > 0 {
@@ -338,6 +344,49 @@ final class Music: ObservableObject {
         return result
     }
     
+    func getAlbumCollectionsFromPlaylits() -> [MPMediaItemCollection] {
+        var result: [MPMediaItemCollection] = []
+        let iCloudFilter = MPMediaPropertyPredicate(value: true,
+                                                    forProperty: MPMediaItemPropertyIsCloudItem,
+                                                    comparisonType: .equalTo)
+        let playlistids = self.selectLibrarys
+        for playlistid in playlistids {
+            let mPMediaQuery = MPMediaQuery.playlists()
+            mPMediaQuery.addFilterPredicate(iCloudFilter)
+            mPMediaQuery.addFilterPredicate(self.createMPMediaPropertyPredicatePersistentID(playlistid: playlistid))
+            if let collections = mPMediaQuery.collections, collections.count > 0 {
+                var maps: [UInt64:MPMediaItemCollection] = [:]
+                for item in collections[0].items {
+                    if self.iCloud == false, item.isCloudItem == true {
+                        continue
+                    }
+//                    print(String(item.albumPersistentID) + ":" + item.albumTitle! + ":" + item.title!)
+                    if let itemCollection = maps[item.albumPersistentID] {
+                        var items = itemCollection.items
+                        items.append(item)
+                        let itemCollection = MPMediaItemCollection(items: items)
+                        maps[item.albumPersistentID] = itemCollection
+                    }
+                    else {
+                        let itemCollection = MPMediaItemCollection(items: [item])
+                        maps[item.albumPersistentID] = itemCollection
+                    }
+                }
+                print(maps.count)
+                for map in maps {
+                    result.append(map.value)
+                }
+            }
+        }
+        return result
+    }
+    
+    func createMPMediaPropertyPredicatePersistentID(playlistid: UInt64) -> MPMediaPropertyPredicate {
+        return MPMediaPropertyPredicate(value: playlistid,
+                                        forProperty: MPMediaPlaylistPropertyPersistentID,
+                                        comparisonType: .equalTo)
+    }
+    
     fileprivate func appendPlaylistList(_ collection: MPMediaItemCollection) {
         if let id = collection.value(forProperty: MPMediaPlaylistPropertyPersistentID) as? UInt64,
            let name = collection.value(forProperty: MPMediaPlaylistPropertyName) as? String {
@@ -368,6 +417,7 @@ final class Music: ObservableObject {
         self.playlists.sort(by: { m1 , m2 in
             m1.name < m2.name
         })
+        self.playlists.insert(Playlist(id: 0, name: NSLocalizedString("Music Library", comment: "")), at: 0)
     }
     
     func matchSelectLibrary(selectLibrary: UInt64) {

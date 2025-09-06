@@ -16,6 +16,7 @@ struct SettingView: View {
             Form {
                 FirstViewMessage()
                 ManualSectionView()
+                LibraryMultiSelectSettingView()
                 CommonSettingView()
                 FilterSettingView()
                 DispSettingView()
@@ -95,30 +96,6 @@ struct FilterSettingView: View {
                     self.music.save()
                     NotificationCenter.default.post(name: .changeArtwork, object: nil)
                 }
-            Picker(selection: self.$music.selectLibrary, content: {
-                Label("Music Library", systemImage: "opticaldisc")
-                    .tag(UInt64(0))
-                ForEach(0..<self.music.playlists.count, id: \.self) { index in
-                    Label(self.music.playlists[index].name, systemImage: "ipod")
-                        .tag(self.music.playlists[index].id)
-                }
-            }, label: {
-                Text("Library")
-            })
-            .pickerStyle(.menu)
-            .onChange(of: self.music.selectLibrary, perform: { newvalue in
-                self.music.matchSelectLibrary(selectLibrary: self.music.selectLibrary)
-                self.music.save()
-                NotificationCenter.default.post(name: .changeArtwork, object: nil)
-            })
-//            Toggle(isOn: self.$music.useSmartPlaylist, label: {
-//                Text("Use Smart Playlist")
-//            })
-//                .onChange(of: self.music.useSmartPlaylist) {newValue in
-//                    self.music.save()
-//                    self.music.setPlaylistList()
-//                    self.music.matchSelectLibrary(selectLibrary: self.music.selectLibrary)
-//                }
         }
     }
 }
