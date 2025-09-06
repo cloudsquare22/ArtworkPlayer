@@ -1,0 +1,359 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "2 Tap" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ダブルタップ"
+          }
+        }
+      }
+    },
+    "About" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artwork Playerについて"
+          }
+        }
+      }
+    },
+    "Artwork" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アートワーク"
+          }
+        }
+      }
+    },
+    "Artwork of circle shape" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "円形"
+          }
+        }
+      }
+    },
+    "Artwork update" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アートワーク更新"
+          }
+        }
+      }
+    },
+    "Auto Lock" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動ロック"
+          }
+        }
+      }
+    },
+    "Background Color" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "背景色"
+          }
+        }
+      }
+    },
+    "Common" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "共通"
+          }
+        }
+      }
+    },
+    "Control artwork" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アートワーク制御"
+          }
+        }
+      }
+    },
+    "Diagram" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "図説"
+          }
+        }
+      }
+    },
+    "Disp" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アートワーク表示"
+          }
+        }
+      }
+    },
+    "Disp min tracks" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示最小曲数"
+          }
+        }
+      }
+    },
+    "Disp operation artwork" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再生操作表示"
+          }
+        }
+      }
+    },
+    "Display album information" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アルバム情報表示"
+          }
+        }
+      }
+    },
+    "Display setting screen" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定画面表示"
+          }
+        }
+      }
+    },
+    "Filter" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示条件"
+          }
+        }
+      }
+    },
+    "If you don't see the artwork, check to see if it is visible in the Music app." : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アートワークが表示されない場合、ミュージックアプリで表示されているか確認してください。"
+          }
+        }
+      }
+    },
+    "Large Artwork Size" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大きいサイズ"
+          }
+        }
+      }
+    },
+    "Launch the music app" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ミュージックアプリ起動"
+          }
+        }
+      }
+    },
+    "Library" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライブラリ"
+          }
+        }
+      }
+    },
+    "Manual" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マニュアル"
+          }
+        }
+      }
+    },
+    "Music Library" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ミュージックライブラリ"
+          }
+        }
+      }
+    },
+    "Play album" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アルバム再生"
+          }
+        }
+      }
+    },
+    "Play control" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再生操作"
+          }
+        }
+      }
+    },
+    "Setting" : {
+      "comment" : "Localizable.strings\n  ArtworkPlayer\n\n  Created by Shin Inaba on 2021/12/15.",
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
+          }
+        }
+      }
+    },
+    "Shuffle Play" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シャッフル再生"
+          }
+        }
+      }
+    },
+    "Start" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "はじめる"
+          }
+        }
+      }
+    },
+    "Tap" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タップ"
+          }
+        }
+      }
+    },
+    "The app uses the music library." : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリはミュージックライブラリを使用します。"
+          }
+        }
+      }
+    },
+    "Title display when no artwork" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アートワーク無し時タイトル表示"
+          }
+        }
+      }
+    },
+    "Use iCloud" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud使用"
+          }
+        }
+      }
+    },
+    "Use Smart Playlist" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スマートプレイリスト"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

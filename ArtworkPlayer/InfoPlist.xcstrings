@@ -1,0 +1,18 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "NSAppleMusicUsageDescription" : {
+      "comment" : "InfoPlist.strings\n  ArtworkPlayer\n\n  Created by Shin Inaba on 2021/12/15.",
+      "extractionState" : "migrated",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音楽の選択、情報表示、再生時にアクセス。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
