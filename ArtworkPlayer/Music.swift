@@ -27,7 +27,8 @@ final class Music: ObservableObject {
         }
     }
     @Published var selectLibrary: UInt64 = 0
-    @Published var playlistList: [(UInt64, String)] = []
+    @Published var selectLibrarys: [UInt64] = []
+    @Published var playlists: [Playlist] = []
     @Published var useSmartPlaylist = false
     @Published var noartwotkTitle = false
     var nowWidth: CGFloat = 0.0
@@ -341,13 +342,13 @@ final class Music: ObservableObject {
         if let id = collection.value(forProperty: MPMediaPlaylistPropertyPersistentID) as? UInt64,
            let name = collection.value(forProperty: MPMediaPlaylistPropertyName) as? String {
             print("playlist:(\(id), \(name))")
-            self.playlistList.append((id, name))
+            self.playlists.append(Playlist(id: id, name: name))
         }
     }
     
     func setPlaylistList() {
         print(#function)
-        self.playlistList = []
+        self.playlists = []
         let iCloudFilter = MPMediaPropertyPredicate(value: true,
                                                     forProperty: MPMediaItemPropertyIsCloudItem,
                                                     comparisonType: .equalTo)
@@ -364,16 +365,16 @@ final class Music: ObservableObject {
                 }
             }
         }
-        self.playlistList.sort(by: { m1 , m2 in
-            m1.1 < m2.1
+        self.playlists.sort(by: { m1 , m2 in
+            m1.name < m2.name
         })
     }
     
     func matchSelectLibrary(selectLibrary: UInt64) {
         self.selectLibrary = 0
         self.setPlaylistList()
-        for playlist in self.playlistList {
-            if playlist.0 == selectLibrary {
+        for playlist in self.playlists {
+            if playlist.id == selectLibrary {
                 self.selectLibrary = selectLibrary
                 break
             }
@@ -384,4 +385,9 @@ final class Music: ObservableObject {
         let columnCount = Int(width / self.artworkSize)
         return columnCount
     }
+}
+
+struct Playlist: Identifiable {
+    var id: UInt64
+    var name: String
 }

@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld" : {
+
+    },
     "©️ 2022-2025 cloudsquare.jp" : {
       "localizations" : {
         "ja" : {
@@ -30,6 +33,12 @@
           }
         }
       }
+    },
+    "Albums in the playlist are eligible." : {
+
+    },
+    "All albums are eligible." : {
+
     },
     "All play" : {
       "localizations" : {
@@ -271,6 +280,9 @@
         }
       }
     },
+    "Playlist" : {
+
+    },
     "Setting" : {
       "localizations" : {
         "ja" : {
@@ -331,6 +343,9 @@
         }
       }
     },
+    "The songs in the album are only those registered in the playlist." : {
+
+    },
     "Title display when no artwork" : {
       "localizations" : {
         "ja" : {
@@ -371,6 +386,9 @@
           }
         }
       }
+    },
+    "You can choose from the music library and playlists." : {
+
     }
   },
   "version" : "1.0"

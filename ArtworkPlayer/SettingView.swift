@@ -98,9 +98,9 @@ struct FilterSettingView: View {
             Picker(selection: self.$music.selectLibrary, content: {
                 Label("Music Library", systemImage: "opticaldisc")
                     .tag(UInt64(0))
-                ForEach(0..<self.music.playlistList.count, id: \.self) { index in
-                    Label(self.music.playlistList[index].1, systemImage: "ipod")
-                        .tag(self.music.playlistList[index].0)
+                ForEach(0..<self.music.playlists.count, id: \.self) { index in
+                    Label(self.music.playlists[index].name, systemImage: "ipod")
+                        .tag(self.music.playlists[index].id)
                 }
             }, label: {
                 Text("Library")
@@ -122,6 +122,9 @@ struct FilterSettingView: View {
         }
     }
 }
+
+
+
 
 struct DispSettingView: View {
     @EnvironmentObject var music: Music

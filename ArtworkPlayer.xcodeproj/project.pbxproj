@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8D334E422E6C5DE400AF5E43 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8D334E412E6C5DE400AF5E43 /* Localizable.xcstrings */; };
 		8D334E442E6C5DE400AF5E43 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8D334E432E6C5DE400AF5E43 /* InfoPlist.xcstrings */; };
+		8D334E462E6C618400AF5E43 /* LibraryMultiSelectSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D334E452E6C618400AF5E43 /* LibraryMultiSelectSettingView.swift */; };
 		8D95BC7F27734EE800CA83E7 /* ManualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BC7E27734EE800CA83E7 /* ManualView.swift */; };
 		8D95BC822774981500CA83E7 /* ExtentionNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BC812774981500CA83E7 /* ExtentionNotification.swift */; };
 		8D95BCA9277B1CE100CA83E7 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BCA8277B1CE100CA83E7 /* FirstView.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		8D334E412E6C5DE400AF5E43 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		8D334E432E6C5DE400AF5E43 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		8D334E452E6C618400AF5E43 /* LibraryMultiSelectSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryMultiSelectSettingView.swift; sourceTree = "<group>"; };
 		8D95BC7E27734EE800CA83E7 /* ManualView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualView.swift; sourceTree = "<group>"; };
 		8D95BC802773534C00CA83E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D95BC812774981500CA83E7 /* ExtentionNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionNotification.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				8D95BC7E27734EE800CA83E7 /* ManualView.swift */,
 				8D95BC812774981500CA83E7 /* ExtentionNotification.swift */,
 				8D95BCA8277B1CE100CA83E7 /* FirstView.swift */,
+				8D334E452E6C618400AF5E43 /* LibraryMultiSelectSettingView.swift */,
 			);
 			path = ArtworkPlayer;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				8D997BB3275F7798000E4607 /* ArtworkPlayerApp.swift in Sources */,
 				8D95BCA9277B1CE100CA83E7 /* FirstView.swift in Sources */,
 				8D95BC7F27734EE800CA83E7 /* ManualView.swift in Sources */,
+				8D334E462E6C618400AF5E43 /* LibraryMultiSelectSettingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +338,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,6 +370,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
