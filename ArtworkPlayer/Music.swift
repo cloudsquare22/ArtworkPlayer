@@ -306,44 +306,6 @@ final class Music: ObservableObject {
         print("autoLock:\(UIApplication.shared.isIdleTimerDisabled)")
     }
     
-    func playList(playlistid: UInt64) -> [MPMediaItemCollection] {
-        var result: [MPMediaItemCollection] = []
-        let iCloudFilter = MPMediaPropertyPredicate(value: true,
-                                                    forProperty: MPMediaItemPropertyIsCloudItem,
-                                                    comparisonType: .equalTo)
-        let idFilter = MPMediaPropertyPredicate(value: playlistid,
-                                                forProperty: MPMediaPlaylistPropertyPersistentID,
-                                                comparisonType: .equalTo)
-
-        let mPMediaQuery = MPMediaQuery.playlists()
-        mPMediaQuery.addFilterPredicate(iCloudFilter)
-        mPMediaQuery.addFilterPredicate(idFilter)
-        if let collections = mPMediaQuery.collections, collections.count > 0 {
-            var maps: [UInt64:MPMediaItemCollection] = [:]
-            for item in collections[0].items {
-                if self.iCloud == false, item.isCloudItem == true {
-                    continue
-                }
-                print(String(item.albumPersistentID) + ":" + item.albumTitle! + ":" + item.title!)
-                if let itemCollection = maps[item.albumPersistentID] {
-                    var items = itemCollection.items
-                    items.append(item)
-                    let itemCollection = MPMediaItemCollection(items: items)
-                    maps[item.albumPersistentID] = itemCollection
-                }
-                else {
-                    let itemCollection = MPMediaItemCollection(items: [item])
-                    maps[item.albumPersistentID] = itemCollection
-                }
-            }
-            print(maps.count)
-            for map in maps {
-                result.append(map.value)
-            }
-        }
-        return result
-    }
-    
     func getAlbumCollectionsFromPlaylits() -> [MPMediaItemCollection] {
         var result: [MPMediaItemCollection] = []
         let iCloudFilter = MPMediaPropertyPredicate(value: true,
