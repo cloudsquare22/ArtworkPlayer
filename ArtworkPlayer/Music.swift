@@ -36,6 +36,7 @@ final class Music: ObservableObject {
     
     static let ARTWORKSIZE_SMALL: CGFloat = 120 - 2
     static let ARTWORKSIZE_LARGE: CGFloat = 180 - 2
+    static let MUSICLIBRARY: UInt64 = 0
     
     var viewCount:  Int  {
         let columnCount = Int(UIScreen.main.bounds.width / self.artworkSize)
@@ -121,6 +122,7 @@ final class Music: ObservableObject {
         self.userdefault.set(self.firstManual, forKey: "firstManual")
         self.userdefault.set(self.autoLock, forKey: "autoLock")
         self.userdefault.set(self.selectLibrary, forKey: "selectLibrary")
+        self.userdefault.set(self.selectLibrarys, forKey: "selectLibrarys")
         self.userdefault.set(self.useSmartPlaylist, forKey: "useSmartPlaylist")
         self.userdefault.set(self.noartwotkTitle, forKey: "noartwotkTitle")
     }
@@ -183,7 +185,7 @@ final class Music: ObservableObject {
         let mPMediaQuery = MPMediaQuery.albums()
         mPMediaQuery.addFilterPredicate(iCloudFilter)
         var collections: [MPMediaItemCollection]? = []
-        if self.selectLibrary == 0 {
+        if self.selectLibrarys.contains(Music.MUSICLIBRARY) == true {
             collections = mPMediaQuery.collections
         }
         else {
@@ -379,7 +381,7 @@ final class Music: ObservableObject {
         self.playlists.sort(by: { m1 , m2 in
             m1.name < m2.name
         })
-        self.playlists.insert(Playlist(id: 0, name: NSLocalizedString("Music Library", comment: "")), at: 0)
+        self.playlists.insert(Playlist(id: Music.MUSICLIBRARY, name: NSLocalizedString("Music Library", comment: "")), at: 0)
     }
     
     func matchSelectLibrary(selectLibrary: UInt64) {
